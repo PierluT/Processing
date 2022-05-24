@@ -1,18 +1,27 @@
-PImage bg;
+import oscP5.*;
+import netP5.*;
 
+PImage bg;
 PImage[] animals = new PImage[4];
 Bubble[] bubbles = new Bubble[4];
-
 PImage logo;
-
 float diam = 100;
 float diam0 = 120;
 
-OscManage oscManage;
+// store incoming/outgoing value
+float value;
+
+// to display sending or receiving
+String activity = ""; 
+
+OscP5 oscP5;
+NetAddress myRemoteLocation;
 
 void setup() {
   size(800,529);
   bg = loadImage("Grass.jpg");
+  oscP5 = new OscP5(this,8000);
+  myRemoteLocation = new NetAddress("10.168.72.172",9000);
   
   animals[0] = loadImage("Animal0.png");
   bubbles[0] = new Bubble(animals[0], width/2, height/2, diam0);
@@ -34,11 +43,6 @@ void draw(){
   rect(width-diam*2,0,diam*2,diam*2);
   fill(255);
   rect(width-diam,0,diam,diam);
-  
-  //OSC
-  rect(0,height/2,oscManage.getValue()*width,20);
-  text(oscManage.getActivity() + oscManage.getValue(),10,20);
-  
 
   
  for (int i=1; i<bubbles.length; i++){
@@ -69,7 +73,15 @@ void draw(){
   bubbles[0].left();
   bubbles[0].right();
   
+  value = 50;
+  //OSC
+  OscMessage myMessage = new OscMessage("/1/juce");
+  myMessage.add(value); 
+  oscP5.send(myMessage, myRemoteLocation); 
 }
+
+
+  //oscManage.oscEvent(massageToSend);
 
 /*void mousePressed(){
     bubbles[1].ascend();

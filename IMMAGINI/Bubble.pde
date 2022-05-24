@@ -1,4 +1,4 @@
-class Bubble{
+class Bubble {
   float x;
   float y;
   float diameter;
