@@ -53,7 +53,7 @@ void draw(){
   for(int i=1; i<bubbles.length; i++){
     if (mousePressed && (mouseButton == LEFT)){
       if((pmouseX <= bubbles[i].x+diam/2 && pmouseX >= bubbles[i].x-diam) && (pmouseY >= bubbles[i].y-diam/2 && pmouseY <= bubbles[i].y+diam)){
-        bubbles[i].ascend();
+        bubbles[i].ascend(bubbles[i].x, bubbles[i].y);
         bubbles[i].top();
         bubbles[i].right();
         if(bubbles[i].x==width-diam/2 && bubbles[i].y==diam/2){

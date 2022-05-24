@@ -17,9 +17,9 @@ class Bubble {
     image(img,x,y,diameter,diameter);
   }
   
-  void ascend(){
-    y--;
+  void ascend(float xPoint, float yPoint){
     x++;
+    y=(((x-xPoint)/(800-(diameter/2)-xPoint))*(0+(diameter/2)-yPoint))+yPoint;
   }
   
   
