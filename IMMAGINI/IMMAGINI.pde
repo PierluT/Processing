@@ -8,7 +8,7 @@ PImage logo;
 float diam = 100;
 float diam0 = 120;
 
-
+OscManage oscManage;
 
 void setup() {
   size(800,529);
@@ -34,6 +34,10 @@ void draw(){
   rect(width-diam*2,0,diam*2,diam*2);
   fill(255);
   rect(width-diam,0,diam,diam);
+  
+  //OSC
+  rect(0,height/2,oscManage.getValue()*width,20);
+  text(oscManage.getActivity() + oscManage.getValue(),10,20);
   
 
   
