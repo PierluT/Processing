@@ -42,7 +42,7 @@ void draw(){
   fill(0);
   rect(width-diam*2,0,diam*2,diam*2);
   fill(255);
-  rect(width-diam,0,diam,diam);
+  rect(width-diam*2,0,diam*2,diam*2);
 
   
  for (int i=1; i<bubbles.length; i++){
@@ -56,14 +56,20 @@ void draw(){
         bubbles[i].ascend(bubbles[i].x, bubbles[i].y);
         bubbles[i].top();
         bubbles[i].right();
-        if(bubbles[i].x==width-diam/2 && bubbles[i].y==diam/2){
+        
+        if(bubbles[i].x==width-diam*2 && bubbles[i].y==diam*2){
+          //rettangolo che si attiva
+        }
+        
+        /*if(bubbles[i].x==width-diam/2 && bubbles[i].y==diam/2){
           int index = int(random(1, animals.length));
           bubbles[i] = new Bubble(animals[index],random(0+diam/2,width-diam/2),random(0+diam/2,height-diam/2),diam);
           bubbles[i].display();
-        }
+        }*/
       }
     }
   }
+
   
   bubbles[0].display();
   bubbles[0].x = mouseX;
