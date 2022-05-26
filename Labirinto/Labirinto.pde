@@ -14,6 +14,12 @@ PImage labyrinth;
 PImage logo;
 PImage bg;
 
+//ANDREW
+boolean boomAndrew = false;
+PImage andrew;
+float xAndrew = 500;
+float yAndrew = 300;
+
 //CHICK
 boolean boomC = false;
 PImage chick;
@@ -44,6 +50,7 @@ void setup(){
   logo = loadImage("Animal0.png");
   chick = loadImage("Animal1.png");
   pig = loadImage("Animal2.png");
+  andrew = loadImage("AndrewSad.jpeg");
   
   xPoint = width-50;
   yPoint = height-350;
@@ -56,6 +63,9 @@ void draw()
   //background(255);
   image(labyrinth,width/2,height/2);
   
+  if(boomAndrew == false){
+    image(andrew,xAndrew,yAndrew,diam,diam);
+  }
   if(boomC == false){
     image(chick,xChick,yChick,diam,diam);
   }
@@ -99,6 +109,9 @@ void draw()
   imageMode(CENTER);
   image(logo,xPoint,yPoint,diam,diam);
   
+  if(xPoint == xAndrew && yPoint == yAndrew && mouseButton == LEFT){
+    boomAndrew = true;
+  }
   if(xPoint == xChick && yPoint == yChick && mouseButton == LEFT){
     boomC = true;
   }
