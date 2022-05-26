@@ -16,7 +16,7 @@ PImage bg;
 int xPoint;
 int yPoint;
 
-int diam = 10;
+int diam = 16;
 
 void setup(){
   size(620, 620);
@@ -24,7 +24,7 @@ void setup(){
   labyrinth = loadImage("labyrintho.png"); 
   bg = loadImage("Verdino.jpg");
   logo = loadImage("Animal0.png");
-  xPoint = width-350;
+  xPoint = width-50;
   yPoint = height-350;
   myRemoteLocation = new NetAddress("10.168.76.204",7563);
 }
@@ -46,20 +46,33 @@ text("YOU WIN!",width/2,height/2);
   
   
 
-  float touch_r = red(get(xPoint,yPoint));
-  float touch_g = green(get(xPoint,yPoint));
-  float touch_b = blue(get(xPoint,yPoint));
+  float touch_r_down = red(get(xPoint,yPoint+diam/2));
+  float touch_g_down = green(get(xPoint,yPoint+diam/2));
+  float touch_b_down = blue(get(xPoint,yPoint+diam/2));
+  
+  float touch_r_up = red(get(xPoint,yPoint-diam/2));
+  float touch_g_up = green(get(xPoint,yPoint-diam/2));
+  float touch_b_up = blue(get(xPoint,yPoint-diam/2));
+  
+  float touch_r_left = red(get(xPoint-diam/2,yPoint));
+  float touch_g_left = green(get(xPoint-diam/2,yPoint));
+  float touch_b_left = blue(get(xPoint-diam/2,yPoint));
+  
+  float touch_r_right = red(get(xPoint+diam/2,yPoint));
+  float touch_g_right = green(get(xPoint+diam/2,yPoint));
+  float touch_b_right = blue(get(xPoint+diam/2,yPoint));
+  
 
-  if(touch_r == 0 && touch_g == 0 && touch_b == 0 && (keyCode == UP)){   
+  if(touch_r_up == 0 && touch_g_up == 0 && touch_b_up == 0 && (keyCode == UP)){   
     yPoint++; 
   }
-  if(touch_r == 0 && touch_g == 0 && touch_b == 0 && (keyCode == DOWN)){   
+  if(touch_r_down == 0 && touch_g_down == 0 && touch_b_down == 0 && (keyCode == DOWN)){   
     yPoint--; 
   }
-  if(touch_r == 0 && touch_g == 0 && touch_b == 0 && (keyCode == LEFT)){   
+  if(touch_r_left == 0 && touch_g_left == 0 && touch_b_left == 0 && (keyCode == LEFT)){   
     xPoint++; 
   }
-  if(touch_r == 0 && touch_g == 0 && touch_b == 0 && (keyCode == RIGHT)){   
+  if(touch_r_right == 0 && touch_g_right == 0 && touch_b_right == 0 && (keyCode == RIGHT)){   
     xPoint--; 
   }
   
