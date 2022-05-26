@@ -4,7 +4,7 @@ PImage bg;
 int xPoint;
 int yPoint;
 
-int diam = 50;
+int diam = 10;
 
 void setup(){
   size(620, 620);
