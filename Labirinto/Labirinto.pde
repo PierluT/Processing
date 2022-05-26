@@ -14,10 +14,23 @@ PImage labyrinth;
 PImage logo;
 PImage bg;
 
+//CHICK
+boolean boomC = false;
+PImage chick;
+float xChick = 500;
+float yChick = 100;
+
+//PIG
+boolean boomP = false;
+PImage pig;
+float xPig = 500;
+float yPig = 200;
+
+
 float xPoint;
 float yPoint;
-float xVel = 5;
-float yVel = 5;
+float xVel = 10;
+float yVel = 10;
 
 float diam = 30;
 
@@ -27,7 +40,11 @@ void setup(){
   oscP5 = new OscP5(this,7563);
   labyrinth = loadImage("LAB PICCOLO.png"); 
   bg = loadImage("Verdino.jpg");
+  
   logo = loadImage("Animal0.png");
+  chick = loadImage("Animal1.png");
+  pig = loadImage("Animal2.png");
+  
   xPoint = width-50;
   yPoint = height-350;
   myRemoteLocation = new NetAddress("10.168.76.204",7563);
@@ -38,15 +55,13 @@ void draw()
   background(bg);
   //background(255);
   image(labyrinth,width/2,height/2);
-
-//se esco dal labrinto??
-/*
-if((x > 155) && (x < 180) && (y < 15)){
-textSize(48);
-textAlign(CENTER);
-fill(255,0,0);
-text("YOU WIN!",width/2,height/2);
-}*/
+  
+  if(boomC == false){
+    image(chick,xChick,yChick,diam,diam);
+  }
+  if(boomP == false){
+    image(pig,xPig,yPig,diam,diam);
+  }
   
   
 
@@ -83,6 +98,13 @@ text("YOU WIN!",width/2,height/2);
   
   imageMode(CENTER);
   image(logo,xPoint,yPoint,diam,diam);
+  
+  if(xPoint == xChick && yPoint == yChick && mouseButton == LEFT){
+    boomC = true;
+  }
+  if(xPoint == xPig && yPoint == yPig && mouseButton == LEFT){
+    boomP = true;
+  }
   
 
   println(mouseX + "," + mouseY);
