@@ -35,7 +35,7 @@ float yPier = 250;
 //RICKY
 boolean boomRicky = false;
 PImage ricky;
-float xRicky = 500;
+float xRicky = 600;
 float yRicky = 400;
 
 //CHICK
