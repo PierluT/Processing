@@ -1,22 +1,24 @@
 PImage labyrinth;
 PImage logo;
 PImage bg;
-int x = 162;
-int y = 162;
+int xPoint;
+int yPoint;
 
-int diam = 20;
+int diam = 50;
 
 void setup(){
   size(620, 620);
-  labyrinth = loadImage("labyrinth.png"); 
-  bg = loadImage("Grass.jpg");
+  labyrinth = loadImage("labyrintho.png"); 
+  bg = loadImage("Verdino.jpg");
   logo = loadImage("Animal0.png");
+  xPoint = width-350;
+  yPoint = height-350;
 }
 
 void draw()
 {
-  //background(bg);
-  background(255);
+  background(bg);
+  //background(255);
   image(labyrinth,width/2,height/2);
 
 //se esco dal labrinto??
@@ -27,15 +29,30 @@ textAlign(CENTER);
 fill(255,0,0);
 text("YOU WIN!",width/2,height/2);
 }*/
+  
+  
 
- 
-  float touch = red(get(x,y));
-  if(touch <= 124 && touch >=100){
-    x = width-350;
-    y = height-350; 
+  float touch_r = red(get(xPoint,yPoint));
+  float touch_g = green(get(xPoint,yPoint));
+  float touch_b = blue(get(xPoint,yPoint));
+
+  if(touch_r == 0 && touch_g == 0 && touch_b == 0 && (keyCode == UP)){   
+    yPoint++; 
   }
+  if(touch_r == 0 && touch_g == 0 && touch_b == 0 && (keyCode == DOWN)){   
+    yPoint--; 
+  }
+  if(touch_r == 0 && touch_g == 0 && touch_b == 0 && (keyCode == LEFT)){   
+    xPoint++; 
+  }
+  if(touch_r == 0 && touch_g == 0 && touch_b == 0 && (keyCode == RIGHT)){   
+    xPoint--; 
+  }
+  
+  
   imageMode(CENTER);
-  image(logo,x,y,diam,diam);
+  image(logo,xPoint,yPoint,diam,diam);
+  
 
   println(mouseX + "," + mouseY);
 }
@@ -43,15 +60,15 @@ text("YOU WIN!",width/2,height/2);
 
 void keyPressed(){
 if ((key == CODED) && (keyCode == UP)){
-y--;
+yPoint--;
 } 
 if ((key == CODED) && (keyCode == DOWN)){
-y++;
+yPoint++;
 } 
 if ((key == CODED) && (keyCode == RIGHT)){
-x++;
+xPoint++;
 } 
 if ((key == CODED) && (keyCode == LEFT)){
-x--;
+xPoint--;
 }
 }
