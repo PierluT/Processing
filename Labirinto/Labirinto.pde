@@ -18,7 +18,25 @@ PImage bg;
 boolean boomAndrew = false;
 PImage andrew;
 float xAndrew = 500;
-float yAndrew = 300;
+float yAndrew = 500;
+
+//CLAUDIO
+boolean boomClaudio = false;
+PImage claudio;
+float xClaudio = 500;
+float yClaudio = 400;
+
+//PIER
+boolean boomPier = false;
+PImage pier;
+float xPier = 500;
+float yPier = 250;
+
+//RICKY
+boolean boomRicky = false;
+PImage ricky;
+float xRicky = 500;
+float yRicky = 400;
 
 //CHICK
 boolean boomC = false;
@@ -38,7 +56,7 @@ float yPoint;
 float xVel = 10;
 float yVel = 10;
 
-float diam = 30;
+float diam = 45;
 
 void setup(){
   size(620, 620);
@@ -50,7 +68,10 @@ void setup(){
   logo = loadImage("Animal0.png");
   chick = loadImage("Animal1.png");
   pig = loadImage("Animal2.png");
-  andrew = loadImage("AndrewSad.jpeg");
+  andrew = loadImage("AndrewSad.png");
+  claudio = loadImage("ClaudioSad.jpeg");
+  pier = loadImage("PierSad.jpeg");
+  ricky = loadImage("RickySad.jpeg");
   
   xPoint = width-50;
   yPoint = height-350;
@@ -66,6 +87,16 @@ void draw()
   if(boomAndrew == false){
     image(andrew,xAndrew,yAndrew,diam,diam);
   }
+  if(boomClaudio == false){
+    image(claudio,xClaudio,yClaudio,diam,diam);
+  }
+  if(boomPier == false){
+    image(pier,xPier,yPier,diam,diam);
+  }
+  if(boomRicky == false){
+    image(ricky,xRicky,yRicky,diam,diam);
+  }
+  
   if(boomC == false){
     image(chick,xChick,yChick,diam,diam);
   }
@@ -112,6 +143,16 @@ void draw()
   if(xPoint == xAndrew && yPoint == yAndrew && mouseButton == LEFT){
     boomAndrew = true;
   }
+  if(xPoint == xClaudio && yPoint == yClaudio && mouseButton == LEFT){
+    boomClaudio = true;
+  }
+  if(xPoint == xPier && yPoint == yPier && mouseButton == LEFT){
+    boomPier = true;
+  }
+  if(xPoint == xRicky && yPoint == yRicky && mouseButton == LEFT){
+    boomRicky = true;
+  }
+  
   if(xPoint == xChick && yPoint == yChick && mouseButton == LEFT){
     boomC = true;
   }
