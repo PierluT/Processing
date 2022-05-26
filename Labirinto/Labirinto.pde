@@ -13,15 +13,19 @@ float r,g,b; //color of the shape
 PImage labyrinth;
 PImage logo;
 PImage bg;
-int xPoint;
-int yPoint;
 
-int diam = 16;
+float xPoint;
+float yPoint;
+float xVel = 5;
+float yVel = 5;
+
+float diam = 30;
 
 void setup(){
   size(620, 620);
+
   oscP5 = new OscP5(this,7563);
-  labyrinth = loadImage("labyrintho.png"); 
+  labyrinth = loadImage("LAB PICCOLO.png"); 
   bg = loadImage("Verdino.jpg");
   logo = loadImage("Animal0.png");
   xPoint = width-50;
@@ -46,21 +50,21 @@ text("YOU WIN!",width/2,height/2);
   
   
 
-  float touch_r_down = red(get(xPoint,yPoint+diam/2));
-  float touch_g_down = green(get(xPoint,yPoint+diam/2));
-  float touch_b_down = blue(get(xPoint,yPoint+diam/2));
+  float touch_r_down = red(get((int)xPoint, (int)(yPoint+diam/2)));
+  float touch_g_down = green(get((int)xPoint,(int)(yPoint+diam/2)));
+  float touch_b_down = blue(get((int)xPoint,(int)(yPoint+diam/2)));
   
-  float touch_r_up = red(get(xPoint,yPoint-diam/2));
-  float touch_g_up = green(get(xPoint,yPoint-diam/2));
-  float touch_b_up = blue(get(xPoint,yPoint-diam/2));
+  float touch_r_up = red(get((int)xPoint,(int)(yPoint-diam/2)));
+  float touch_g_up = green(get((int)xPoint,(int)(yPoint-diam/2)));
+  float touch_b_up = blue(get((int)xPoint,(int)(yPoint-diam/2)));
   
-  float touch_r_left = red(get(xPoint-diam/2,yPoint));
-  float touch_g_left = green(get(xPoint-diam/2,yPoint));
-  float touch_b_left = blue(get(xPoint-diam/2,yPoint));
+  float touch_r_left = red(get((int)(xPoint-diam/2),(int)yPoint));
+  float touch_g_left = green(get((int)(xPoint-diam/2),(int)yPoint));
+  float touch_b_left = blue(get((int)(xPoint-diam/2),(int)yPoint));
   
-  float touch_r_right = red(get(xPoint+diam/2,yPoint));
-  float touch_g_right = green(get(xPoint+diam/2,yPoint));
-  float touch_b_right = blue(get(xPoint+diam/2,yPoint));
+  float touch_r_right = red(get((int)(xPoint+diam/2),(int)yPoint));
+  float touch_g_right = green(get((int)(xPoint+diam/2),(int)yPoint));
+  float touch_b_right = blue(get((int)(xPoint+diam/2),(int)yPoint));
   
 
   if(touch_r_up == 0 && touch_g_up == 0 && touch_b_up == 0 && (keyCode == UP)){   
@@ -87,16 +91,16 @@ text("YOU WIN!",width/2,height/2);
 
 void keyPressed(){
 if ((key == CODED) && (keyCode == UP)){
-yPoint--;
+yPoint = yPoint - yVel;
 } 
 if ((key == CODED) && (keyCode == DOWN)){
-yPoint++;
+yPoint = yPoint + yVel;
 } 
 if ((key == CODED) && (keyCode == RIGHT)){
-xPoint++;
+xPoint = xPoint + xVel;
 } 
 if ((key == CODED) && (keyCode == LEFT)){
-xPoint--;
+xPoint = xPoint - xVel;
 }
 }
 
