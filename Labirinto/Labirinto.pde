@@ -17,38 +17,38 @@ PImage bg;
 //ANDREW
 boolean boomAndrew = false;
 PImage andrew;
-float xAndrew = 500;
-float yAndrew = 500;
+float xAndrew = 400;
+float yAndrew = 523;
 
 //CLAUDIO
 boolean boomClaudio = false;
 PImage claudio;
-float xClaudio = 500;
-float yClaudio = 400;
+float xClaudio = 300;
+float yClaudio = 523;
 
 //PIER
 boolean boomPier = false;
 PImage pier;
-float xPier = 500;
-float yPier = 250;
+float xPier = 200;
+float yPier = 523;
 
 //RICKY
 boolean boomRicky = false;
 PImage ricky;
-float xRicky = 600;
-float yRicky = 400;
+float xRicky =100;
+float yRicky = 523;
 
 //CHICK
 boolean boomC = false;
 PImage chick;
-float xChick = 500;
+float xChick = 515;
 float yChick = 100;
 
 //PIG
 boolean boomP = false;
 PImage pig;
-float xPig = 500;
-float yPig = 200;
+float xPig = 50;
+float yPig = 290;
 
 
 float xPoint;
@@ -56,13 +56,14 @@ float yPoint;
 float xVel = 10;
 float yVel = 10;
 
-float diam = 45;
+float diamCapr = 45;
+float diam = 30;
 
 void setup(){
   size(620, 620);
 
   oscP5 = new OscP5(this,7563);
-  labyrinth = loadImage("LAB PICCOLO.png"); 
+  labyrinth = loadImage("maze.png"); 
   bg = loadImage("Verdino.jpg");
   
   logo = loadImage("Animal0.png");
@@ -73,8 +74,8 @@ void setup(){
   pier = loadImage("PierSad.jpeg");
   ricky = loadImage("RickySad.jpeg");
   
-  xPoint = width-50;
-  yPoint = height-350;
+  xPoint = width/2;
+  yPoint = height/2;
   myRemoteLocation = new NetAddress("10.168.76.204",7563);
 }
 
@@ -138,7 +139,7 @@ void draw()
   
   
   imageMode(CENTER);
-  image(logo,xPoint,yPoint,diam,diam);
+  image(logo,xPoint,yPoint,diamCapr,diamCapr);
   
   if(xPoint == xAndrew && yPoint == yAndrew && mouseButton == LEFT){
     boomAndrew = true;
@@ -161,7 +162,7 @@ void draw()
   }
   
 
-  println(mouseX + "," + mouseY);
+  //println(mouseX + "," + mouseY);
 }
 
 
