@@ -53,14 +53,14 @@ float yPig = 290;
 
 float xPoint;
 float yPoint;
-float xVel = 10;
-float yVel = 10;
+float xVel = 5;
+float yVel = 5;
 
-float diamCapr = 45;
+float diamCapr = 50;
 float diam = 30;
 
 void setup(){
-  size(620, 620);
+  size(800, 800);
 
   oscP5 = new OscP5(this,7563);
   labyrinth = loadImage("maze.png"); 
@@ -107,21 +107,21 @@ void draw()
   
   
 
-  float touch_r_down = red(get((int)xPoint, (int)(yPoint+diam/2)));
-  float touch_g_down = green(get((int)xPoint,(int)(yPoint+diam/2)));
-  float touch_b_down = blue(get((int)xPoint,(int)(yPoint+diam/2)));
+  float touch_r_down = red(get((int)xPoint, (int)(yPoint+diamCapr/2)));
+  float touch_g_down = green(get((int)xPoint,(int)(yPoint+diamCapr/2)));
+  float touch_b_down = blue(get((int)xPoint,(int)(yPoint+diamCapr/2)));
   
-  float touch_r_up = red(get((int)xPoint,(int)(yPoint-diam/2)));
-  float touch_g_up = green(get((int)xPoint,(int)(yPoint-diam/2)));
-  float touch_b_up = blue(get((int)xPoint,(int)(yPoint-diam/2)));
+  float touch_r_up = red(get((int)xPoint,(int)(yPoint-diamCapr/2)));
+  float touch_g_up = green(get((int)xPoint,(int)(yPoint-diamCapr/2)));
+  float touch_b_up = blue(get((int)xPoint,(int)(yPoint-diamCapr/2)));
   
-  float touch_r_left = red(get((int)(xPoint-diam/2),(int)yPoint));
-  float touch_g_left = green(get((int)(xPoint-diam/2),(int)yPoint));
-  float touch_b_left = blue(get((int)(xPoint-diam/2),(int)yPoint));
+  float touch_r_left = red(get((int)(xPoint-diamCapr/2),(int)yPoint));
+  float touch_g_left = green(get((int)(xPoint-diamCapr/2),(int)yPoint));
+  float touch_b_left = blue(get((int)(xPoint-diamCapr/2),(int)yPoint));
   
-  float touch_r_right = red(get((int)(xPoint+diam/2),(int)yPoint));
-  float touch_g_right = green(get((int)(xPoint+diam/2),(int)yPoint));
-  float touch_b_right = blue(get((int)(xPoint+diam/2),(int)yPoint));
+  float touch_r_right = red(get((int)(xPoint+diamCapr/2),(int)yPoint));
+  float touch_g_right = green(get((int)(xPoint+diamCapr/2),(int)yPoint));
+  float touch_b_right = blue(get((int)(xPoint+diamCapr/2),(int)yPoint));
   
 
   if(touch_r_up == 0 && touch_g_up == 0 && touch_b_up == 0 && (keyCode == UP)){   
