@@ -126,15 +126,27 @@ void draw()
 
   if(touch_r_up == 0 && touch_g_up == 0 && touch_b_up == 0 && (keyCode == UP)){   
     yPoint++; 
+    if(key==CODED){
+      yPoint = yPoint + yVel;
+    }
   }
   if(touch_r_down == 0 && touch_g_down == 0 && touch_b_down == 0 && (keyCode == DOWN)){   
     yPoint--; 
+    if(key==CODED){
+      yPoint = yPoint - yVel;
+    }
   }
   if(touch_r_left == 0 && touch_g_left == 0 && touch_b_left == 0 && (keyCode == LEFT)){   
     xPoint++; 
+    if(key==CODED){
+      xPoint = xPoint + xVel;
+    }
   }
   if(touch_r_right == 0 && touch_g_right == 0 && touch_b_right == 0 && (keyCode == RIGHT)){   
     xPoint--; 
+    if(key==CODED){
+      xPoint = xPoint - xVel;
+    }
   }
   
   
