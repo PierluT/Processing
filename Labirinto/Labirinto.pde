@@ -76,7 +76,7 @@ void setup(){
   
   xPoint = width/2;
   yPoint = height/2;
-  myRemoteLocation = new NetAddress("10.168.76.204",7563);
+  myRemoteLocation = new NetAddress("192.168.6.2",7563);
 }
 
 void draw()
@@ -144,9 +144,9 @@ void draw()
   }
   if(touch_r_right == 0 && touch_g_right == 0 && touch_b_right == 0 && (keyCode == RIGHT)){   
     xPoint--; 
-    if(key==CODED){
+    /*if(key==CODED){
       xPoint = xPoint - xVel;
-    }
+    }*/
   }
   
   
@@ -186,11 +186,14 @@ if ((key == CODED) && (keyCode == DOWN)){
 yPoint = yPoint + yVel;
 } 
 if ((key == CODED) && (keyCode == RIGHT)){
-xPoint = xPoint + xVel;
+//if (r > -0.176){
+  xPoint = xPoint + xVel;
 } 
 if ((key == CODED) && (keyCode == LEFT)){
 xPoint = xPoint - xVel;
 }
+//println(" value: r:"+r);
+//println(xPoint + ";"+ yPoint);
 }
 
 /* incoming osc message are forwarded to the oscEvent method. */
@@ -203,14 +206,20 @@ void oscEvent(OscMessage theOscMessage) {
   
   
   //If address of oscMessage is /colour then change the shape and colour visualized
-  if (theOscMessage.checkAddrPattern("/colour"))
+  if (theOscMessage.checkAddrPattern("/movement"))
   {
     
     //get rgb values
-    r = theOscMessage.get(0).intValue();
-    g = theOscMessage.get(1).intValue();
-    b = theOscMessage.get(2).intValue();
-    println(" value: r:"+r+" g:"+g+" b:"+b);
+    r = theOscMessage.get(0).floatValue();
+    if (r > -0.176){
+      xPoint = xPoint - xVel;
+    }
+    else {
+    xPoint = xPoint + xVel;
+    }
+    //g = theOscMessage.get(1).floatValue();
+    //b = theOscMessage.get(2).floatValue();
+    
   }
   
   
@@ -224,4 +233,13 @@ void oscEvent(OscMessage theOscMessage) {
   }
   
   
+}
+
+void oscMovementRecieved(){
+if (r > 0){
+xPoint = xPoint - xVel;
+} else if(r < 0){
+xPoint = xPoint + xVel;
+}
+
 }
