@@ -274,7 +274,7 @@ void oscEvent(OscMessage theOscMessage) {
   //If address of oscMessage is /colour then change the shape and colour visualized
   if (theOscMessage.checkAddrPattern("/movement"))
   {
-    /*
+    
     //Get X value
     x = theOscMessage.get(0).floatValue();
     if (Math.round(x) == -1){
@@ -282,16 +282,16 @@ void oscEvent(OscMessage theOscMessage) {
     }
     if(Math.round(x) == 1) {
     xPoint = xPoint + xVel;//move to left
-    }*/
+    }
     
     println(" value: y:"+Math.round(y));
     //Get Y value
     y = theOscMessage.get(1).floatValue();
-    if (Math.round(y) == -1){
-      xPoint = xPoint - xVel;//move to right
+    if (Math.round(y) == 1){
+      yPoint = yPoint - yVel;//move up
     }
-    if(Math.round(y) == 1) {
-    xPoint = xPoint + xVel;//move to left
+    if(Math.round(y) == -1) {
+    yPoint = yPoint + yVel;//move down
     }
     println(" value: y:"+Math.round(y));
     //b = theOscMessage.get(2).floatValue();
