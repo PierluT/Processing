@@ -41,14 +41,14 @@ float yRicky = 523;
 //CHICK
 boolean boomC = false;
 PImage chick;
-float xChick = 515;
-float yChick = 100;
+float xChick = 400;
+float yChick = 523;
 
 //PIG
 boolean boomP = false;
 PImage pig;
-float xPig = 50;
-float yPig = 290;
+float xPig = 400;
+float yPig = 600;
 
 
 float xPoint;
@@ -97,7 +97,6 @@ void draw()
   if(boomRicky == false){
     image(ricky,xRicky,yRicky,diam,diam);
   }
-  
   if(boomC == false){
     image(chick,xChick,yChick,diam,diam);
   }
@@ -144,32 +143,100 @@ void draw()
   }
   if(touch_r_right == 0 && touch_g_right == 0 && touch_b_right == 0 && (keyCode == RIGHT)){   
     xPoint--; 
-    /*if(key==CODED){
+    if(key==CODED){
       xPoint = xPoint - xVel;
-    }*/
+    }
   }
   
   
   imageMode(CENTER);
   image(logo,xPoint,yPoint,diamCapr,diamCapr);
   
-  if(xPoint == xAndrew && yPoint == yAndrew && mouseButton == LEFT){
+
+  if(xPoint >= xAndrew - diam && xPoint <= xAndrew + diam
+  && yPoint >= yAndrew - diam && yPoint <= yAndrew + diam
+  && boomAndrew == false){
+    imageMode(CENTER);
+    image(logo,width/2,height/2,diamCapr,diamCapr);
+    xPoint = width/2;
+    yPoint = height/2;
+  }
+  if(xPoint >= xAndrew - diam*2 && xPoint <= xAndrew + diam*2
+  && yPoint >= yAndrew - diam*2 && yPoint <= yAndrew + diam*2
+  && mouseButton == LEFT){
     boomAndrew = true;
   }
-  if(xPoint == xClaudio && yPoint == yClaudio && mouseButton == LEFT){
+  
+  if(xPoint >= xClaudio - diam && xPoint <= xClaudio + diam
+  && yPoint >= yClaudio - diam && yPoint <= yClaudio + diam
+  && boomClaudio == false){
+    imageMode(CENTER);
+    image(logo,width/2,height/2,diamCapr,diamCapr);
+    xPoint = width/2;
+    yPoint = height/2;
+  }
+  if(xPoint >= xClaudio - diam*2 && xPoint <= xClaudio + diam*2
+  && yPoint >= yClaudio - diam*2 && yPoint <= yClaudio + diam*2
+  && mouseButton == LEFT){
     boomClaudio = true;
   }
-  if(xPoint == xPier && yPoint == yPier && mouseButton == LEFT){
+
+  if(xPoint >= xPier - diam && xPoint <= xPier + diam
+  && yPoint >= yPier - diam && yPoint <= yPier + diam
+  && boomPier == false){
+    imageMode(CENTER);
+    image(logo,width/2,height/2,diamCapr,diamCapr);
+    xPoint = width/2;
+    yPoint = height/2;
+  }
+  if(xPoint >= xPier - diam*2 && xPoint <= xPier + diam*2
+  && yPoint >= yPier - diam*2 && yPoint <= yPier + diam*2
+  && mouseButton == LEFT){
     boomPier = true;
   }
-  if(xPoint == xRicky && yPoint == yRicky && mouseButton == LEFT){
+  
+  if(xPoint >= xRicky - diam && xPoint <= xRicky + diam
+  && yPoint >= yRicky - diam && yPoint <= yRicky + diam
+  && boomRicky == false){
+    imageMode(CENTER);
+    image(logo,width/2,height/2,diamCapr,diamCapr);
+    xPoint = width/2;
+    yPoint = height/2;
+  }
+  if(xPoint >= xRicky - diam*2 && xPoint <= xRicky + diam*2
+  && yPoint >= yRicky - diam*2 && yPoint <= yRicky + diam*2
+  && mouseButton == LEFT){
     boomRicky = true;
   }
   
-  if(xPoint == xChick && yPoint == yChick && mouseButton == LEFT){
+
+  //CHICKEN
+  if(xPoint >= xChick - diam && xPoint <= xChick + diam
+  && yPoint >= yChick - diam && yPoint <= yChick + diam
+  && boomC == false){
+    imageMode(CENTER);
+    image(logo,width/2,height/2,diamCapr,diamCapr);
+    xPoint = width/2;
+    yPoint = height/2;
+  }
+  if(xPoint >= xChick - diam*2 && xPoint <= xChick + diam*2
+  && yPoint >= yChick - diam*2 && yPoint <= yChick + diam*2
+  && mouseButton == LEFT){
     boomC = true;
   }
-  if(xPoint == xPig && yPoint == yPig && mouseButton == LEFT){
+  
+  //PIG
+  if(xPoint >= xPig - diam && xPoint <= xPig + diam
+  && yPoint >= yPig - diam && yPoint <= yPig + diam
+  && boomP == false){
+    imageMode(CENTER);
+    image(logo,width/2,height/2,diamCapr,diamCapr);
+    xPoint = width/2;
+    yPoint = height/2;
+  }
+  if(xPoint >= xPig - diam*2 && xPoint <= xPig + diam*2
+  && yPoint >= yPig - diam*2 && yPoint <= yPig + diam*2
+  && mouseButton == LEFT){
     boomP = true;
   }
   
