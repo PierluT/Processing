@@ -284,7 +284,6 @@ void oscEvent(OscMessage theOscMessage) {
     xPoint = xPoint + xVel;//move to left
     }
     
-    println(" value: y:"+Math.round(y));
     //Get Y value
     y = theOscMessage.get(1).floatValue();
     if (Math.round(y) == 1){
@@ -293,7 +292,7 @@ void oscEvent(OscMessage theOscMessage) {
     if(Math.round(y) == -1) {
     yPoint = yPoint + yVel;//move down
     }
-    println(" value: y:"+Math.round(y));
+    println(" value: y:"+y);
     //b = theOscMessage.get(2).floatValue();
     
   }
