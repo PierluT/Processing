@@ -192,32 +192,35 @@ if ((key == CODED) && (keyCode == RIGHT)){
 if ((key == CODED) && (keyCode == LEFT)){
 xPoint = xPoint - xVel;
 }
-//println(" value: r:"+r);
-//println(xPoint + ";"+ yPoint);
 }
 
 /* incoming osc message are forwarded to the oscEvent method. */
 void oscEvent(OscMessage theOscMessage) {
   /* print the address pattern and the typetag of the received OscMessage */
   print("### received an osc message.");
-  print(" addrpattern: "+theOscMessage.addrPattern());
-  println(" typetag: "+theOscMessage.typetag());
-  
-  
-  
   //If address of oscMessage is /colour then change the shape and colour visualized
   if (theOscMessage.checkAddrPattern("/movement"))
   {
+    /*
+    //Get X value
+    x = theOscMessage.get(0).floatValue();
+    if (Math.round(x) == -1){
+      xPoint = xPoint - xVel;//move to right
+    }
+    if(Math.round(x) == 1) {
+    xPoint = xPoint + xVel;//move to left
+    }*/
     
-    //get rgb values
-    r = theOscMessage.get(0).floatValue();
-    if (r > -0.176){
-      xPoint = xPoint - xVel;
+    println(" value: y:"+Math.round(y));
+    //Get Y value
+    y = theOscMessage.get(1).floatValue();
+    if (Math.round(y) == -1){
+      xPoint = xPoint - xVel;//move to right
     }
-    else {
-    xPoint = xPoint + xVel;
+    if(Math.round(y) == 1) {
+    xPoint = xPoint + xVel;//move to left
     }
-    //g = theOscMessage.get(1).floatValue();
+    println(" value: y:"+Math.round(y));
     //b = theOscMessage.get(2).floatValue();
     
   }
