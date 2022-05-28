@@ -17,7 +17,7 @@ PImage bg;
 //ANDREW
 boolean boomAndrew = false;
 PImage andrew;
-float xAndrew = 20;
+float xAndrew = 400;
 float yAndrew = 523;
 
 //CLAUDIO
@@ -41,14 +41,14 @@ float yRicky = 523;
 //CHICK
 boolean boomC = false;
 PImage chick;
-float xChick = 230;
-float yChick = 400;
+float xChick = 515;
+float yChick = 100;
 
 //PIG
 boolean boomP = false;
 PImage pig;
-float xPig = 500;
-float yPig = 600;
+float xPig = 50;
+float yPig = 290;
 
 
 float xPoint;
@@ -57,7 +57,7 @@ float xVel = 5;
 float yVel = 5;
 
 float diamCapr = 50;
-float diam = 30;
+float diam = 40;
 
 void setup(){
   size(800, 800);
@@ -76,7 +76,7 @@ void setup(){
   
   xPoint = width/2;
   yPoint = height/2;
-  myRemoteLocation = new NetAddress("192.168.6.2",7563);
+  myRemoteLocation = new NetAddress("10.168.76.204",7563);
 }
 
 void draw()
@@ -97,6 +97,7 @@ void draw()
   if(boomRicky == false){
     image(ricky,xRicky,yRicky,diam,diam);
   }
+  
   if(boomC == false){
     image(chick,xChick,yChick,diam,diam);
   }
@@ -152,98 +153,24 @@ void draw()
   imageMode(CENTER);
   image(logo,xPoint,yPoint,diamCapr,diamCapr);
   
-
-  if(xPoint >= xAndrew - (diam/2 + diamCapr/2) && xPoint <= xAndrew + (diam/2 + diamCapr/2)
-  && yPoint >= yAndrew - (diam/2 + diamCapr/2) && yPoint <= yAndrew + (diam/2 + diamCapr/2)
-  && boomAndrew == false){
-    imageMode(CENTER);
-    image(logo,width/2,height/2,diamCapr,diamCapr);
-    xPoint = width/2;
-    yPoint = height/2;
-  }
-  if(xPoint >= xAndrew - (diam+diamCapr) && xPoint <= xAndrew + (diam+diamCapr)
-  && yPoint >= yAndrew - (diam+diamCapr) && yPoint <= yAndrew + (diam+diamCapr)
-  && mouseButton == LEFT){
+  if(xPoint == xAndrew && yPoint == yAndrew && mouseButton == LEFT){
     boomAndrew = true;
-    mouseButton = 0;
   }
-  
-  if(xPoint >= xClaudio - (diam/2 + diamCapr/2) && xPoint <= xClaudio + (diam/2 + diamCapr/2)
-  && yPoint >= yClaudio - (diam/2 + diamCapr/2) && yPoint <= yClaudio + (diam/2 + diamCapr/2)
-  && boomClaudio == false){
-    imageMode(CENTER);
-    image(logo,width/2,height/2,diamCapr,diamCapr);
-    xPoint = width/2;
-    yPoint = height/2;
-  }
-  if(xPoint >= xClaudio - (diam+diamCapr) && xPoint <= xClaudio + (diam+diamCapr)
-  && yPoint >= yClaudio - (diam+diamCapr) && yPoint <= yClaudio + (diam+diamCapr)
-  && mouseButton == LEFT){
+  if(xPoint == xClaudio && yPoint == yClaudio && mouseButton == LEFT){
     boomClaudio = true;
-    mouseButton = 0;
   }
-
-  if(xPoint >= xPier - (diam/2 + diamCapr/2) && xPoint <= xPier + (diam/2 + diamCapr/2)
-  && yPoint >= yPier - (diam/2 + diamCapr/2) && yPoint <= yPier + (diam/2 + diamCapr/2)
-  && boomPier == false){
-    imageMode(CENTER);
-    image(logo,width/2,height/2,diamCapr,diamCapr);
-    xPoint = width/2;
-    yPoint = height/2;
-  }
-  if(xPoint >= xPier - (diam+diamCapr) && xPoint <= xPier + (diam+diamCapr)
-  && yPoint >= yPier - (diam+diamCapr) && yPoint <= yPier + (diam+diamCapr)
-  && mouseButton == LEFT){
+  if(xPoint == xPier && yPoint == yPier && mouseButton == LEFT){
     boomPier = true;
-    mouseButton = 0;
   }
-  
-  if(xPoint >= xRicky - (diam/2 + diamCapr/2) && xPoint <= xRicky + (diam/2 + diamCapr/2)
-  && yPoint >= yRicky - (diam/2 + diamCapr/2) && yPoint <= yRicky + (diam/2 + diamCapr/2)
-  && boomRicky == false){
-    imageMode(CENTER);
-    image(logo,width/2,height/2,diamCapr,diamCapr);
-    xPoint = width/2;
-    yPoint = height/2;
-  }
-  if(xPoint >= xRicky - (diam+diamCapr) && xPoint <= xRicky + (diam+diamCapr)
-  && yPoint >= yRicky - (diam+diamCapr) && yPoint <= yRicky + (diam+diamCapr)
-  && mouseButton == LEFT){
+  if(xPoint == xRicky && yPoint == yRicky && mouseButton == LEFT){
     boomRicky = true;
-    mouseButton = 0;
   }
   
-
-  //CHICKEN
-  if(xPoint >= xChick - (diam/2 + diamCapr/2) && xPoint <= xChick + (diam/2 + diamCapr/2)
-  && yPoint >= yChick - (diam/2 + diamCapr/2) && yPoint <= yChick + (diam/2 + diamCapr/2)
-  && boomC == false){
-    imageMode(CENTER);
-    image(logo,width/2,height/2,diamCapr,diamCapr);
-    xPoint = width/2;
-    yPoint = height/2;
-  }
-  if(xPoint >= xChick - (diam+diamCapr) && xPoint <= xChick + (diam+diamCapr)
-  && yPoint >= yChick - (diam+diamCapr) && yPoint <= yChick + (diam+diamCapr)
-  && mouseButton == LEFT){
+  if(xPoint == xChick && yPoint == yChick && mouseButton == LEFT){
     boomC = true;
-    mouseButton = 0;
   }
-  
-  //PIG
-  if(xPoint >= xPig - (diam/2 + diamCapr/2) && xPoint <= xPig + (diam/2 + diamCapr/2)
-  && yPoint >= yPig - (diam/2 + diamCapr/2) && yPoint <= yPig + (diam/2 + diamCapr/2)
-  && boomP == false){
-    imageMode(CENTER);
-    image(logo,width/2,height/2,diamCapr,diamCapr);
-    xPoint = width/2;
-    yPoint = height/2;
-  }
-  if(xPoint >= xPig - (diam+diamCapr) && xPoint <= xPig + (diam+diamCapr)
-  && yPoint >= yPig - (diam+diamCapr) && yPoint <= yPig + (diam+diamCapr)
-  && mouseButton == LEFT){
+  if(xPoint == xPig && yPoint == yPig && mouseButton == LEFT){
     boomP = true;
-    mouseButton = 0;
   }
   
 
@@ -259,8 +186,7 @@ if ((key == CODED) && (keyCode == DOWN)){
 yPoint = yPoint + yVel;
 } 
 if ((key == CODED) && (keyCode == RIGHT)){
-//if (r > -0.176){
-  xPoint = xPoint + xVel;
+xPoint = xPoint + xVel;
 } 
 if ((key == CODED) && (keyCode == LEFT)){
 xPoint = xPoint - xVel;
@@ -271,31 +197,20 @@ xPoint = xPoint - xVel;
 void oscEvent(OscMessage theOscMessage) {
   /* print the address pattern and the typetag of the received OscMessage */
   print("### received an osc message.");
+  print(" addrpattern: "+theOscMessage.addrPattern());
+  println(" typetag: "+theOscMessage.typetag());
+  
+  
+  
   //If address of oscMessage is /colour then change the shape and colour visualized
-  if (theOscMessage.checkAddrPattern("/movement"))
+  if (theOscMessage.checkAddrPattern("/colour"))
   {
-    /*
-    //Get X value
-    x = theOscMessage.get(0).floatValue();
-    if (Math.round(x) == -1){
-      xPoint = xPoint - xVel;//move to right
-    }
-    if(Math.round(x) == 1) {
-    xPoint = xPoint + xVel;//move to left
-    }*/
     
-    println(" value: y:"+Math.round(y));
-    //Get Y value
-    y = theOscMessage.get(1).floatValue();
-    if (Math.round(y) == -1){
-      xPoint = xPoint - xVel;//move to right
-    }
-    if(Math.round(y) == 1) {
-    xPoint = xPoint + xVel;//move to left
-    }
-    println(" value: y:"+Math.round(y));
-    //b = theOscMessage.get(2).floatValue();
-    
+    //get rgb values
+    r = theOscMessage.get(0).intValue();
+    g = theOscMessage.get(1).intValue();
+    b = theOscMessage.get(2).intValue();
+    println(" value: r:"+r+" g:"+g+" b:"+b);
   }
   
   
@@ -309,13 +224,4 @@ void oscEvent(OscMessage theOscMessage) {
   }
   
   
-}
-
-void oscMovementRecieved(){
-if (r > 0){
-xPoint = xPoint - xVel;
-} else if(r < 0){
-xPoint = xPoint + xVel;
-}
-
 }
