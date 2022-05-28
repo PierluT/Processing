@@ -59,6 +59,23 @@ float yVel = 5;
 float diamCapr = 50;
 float diam = 30;
 
+
+//Color Positions
+float touch_r_down; 
+float touch_g_down; 
+float touch_b_down ;
+  
+float touch_r_up ;
+float touch_g_up;
+float touch_b_up;
+  
+float touch_r_left; 
+float touch_g_left ;
+float touch_b_left ;
+float touch_r_right ;
+float touch_g_right ;
+float touch_b_right ;
+
 void setup(){
   size(800, 800);
 
@@ -81,6 +98,22 @@ void setup(){
 
 void draw()
 {
+  touch_r_down = red(get((int)xPoint, (int)(yPoint+diamCapr/2)));
+  touch_g_down = green(get((int)xPoint,(int)(yPoint+diamCapr/2)));
+  touch_b_down = blue(get((int)xPoint,(int)(yPoint+diamCapr/2)));
+  
+  touch_r_up = red(get((int)xPoint,(int)(yPoint-diamCapr/2)));
+  touch_g_up = green(get((int)xPoint,(int)(yPoint-diamCapr/2)));
+  touch_b_up = blue(get((int)xPoint,(int)(yPoint-diamCapr/2)));
+  
+  touch_r_left = red(get((int)(xPoint-diamCapr/2),(int)yPoint));
+  touch_g_left = green(get((int)(xPoint-diamCapr/2),(int)yPoint));
+  touch_b_left = blue(get((int)(xPoint-diamCapr/2),(int)yPoint));
+  
+  touch_r_right = red(get((int)(xPoint+diamCapr/2),(int)yPoint));
+  touch_g_right = green(get((int)(xPoint+diamCapr/2),(int)yPoint));
+  touch_b_right = blue(get((int)(xPoint+diamCapr/2),(int)yPoint));
+  
   background(bg);
   //background(255);
   image(labyrinth,width/2,height/2);
@@ -103,26 +136,6 @@ void draw()
   if(boomP == false){
     image(pig,xPig,yPig,diam,diam);
   }
-  
-  
-
-  float touch_r_down = red(get((int)xPoint, (int)(yPoint+diamCapr/2)));
-  float touch_g_down = green(get((int)xPoint,(int)(yPoint+diamCapr/2)));
-  float touch_b_down = blue(get((int)xPoint,(int)(yPoint+diamCapr/2)));
-  
-  float touch_r_up = red(get((int)xPoint,(int)(yPoint-diamCapr/2)));
-  float touch_g_up = green(get((int)xPoint,(int)(yPoint-diamCapr/2)));
-  float touch_b_up = blue(get((int)xPoint,(int)(yPoint-diamCapr/2)));
-  
-  float touch_r_left = red(get((int)(xPoint-diamCapr/2),(int)yPoint));
-  float touch_g_left = green(get((int)(xPoint-diamCapr/2),(int)yPoint));
-  float touch_b_left = blue(get((int)(xPoint-diamCapr/2),(int)yPoint));
-  
-  float touch_r_right = red(get((int)(xPoint+diamCapr/2),(int)yPoint));
-  float touch_g_right = green(get((int)(xPoint+diamCapr/2),(int)yPoint));
-  float touch_b_right = blue(get((int)(xPoint+diamCapr/2),(int)yPoint));
-  
-
   if(touch_r_up == 0 && touch_g_up == 0 && touch_b_up == 0 && (keyCode == UP)){   
     yPoint++; 
     if(key==CODED){
@@ -245,55 +258,61 @@ void draw()
     boomP = true;
     mouseButton = 0;
   }
-  
-
-  //println(mouseX + "," + mouseY);
-}
-
-
-void keyPressed(){
-if ((key == CODED) && (keyCode == UP)){
-yPoint = yPoint - yVel;
-} 
-if ((key == CODED) && (keyCode == DOWN)){
-yPoint = yPoint + yVel;
-} 
-if ((key == CODED) && (keyCode == RIGHT)){
-//if (r > -0.176){
-  xPoint = xPoint + xVel;
-} 
-if ((key == CODED) && (keyCode == LEFT)){
-xPoint = xPoint - xVel;
-}
 }
 
 /* incoming osc message are forwarded to the oscEvent method. */
 void oscEvent(OscMessage theOscMessage) {
-  /* print the address pattern and the typetag of the received OscMessage */
-  print("### received an osc message.");
+ 
   //If address of oscMessage is /colour then change the shape and colour visualized
   if (theOscMessage.checkAddrPattern("/movement"))
   {
     
     //Get X value
     x = theOscMessage.get(0).floatValue();
+    
+    //Move to left & control black pixel
     if (Math.round(x) == -1){
-      xPoint = xPoint - xVel;//move to right
+      if(touch_r_left == 0 && touch_g_left == 0 && touch_b_left == 0){   
+        xPoint = xPoint + xVel;
+      }
+      else{
+      xPoint = xPoint - xVel;//move to left ù
+      }
     }
+    
+    //Move to right & control black pixel
     if(Math.round(x) == 1) {
-    xPoint = xPoint + xVel;//move to left
+      if(touch_r_right == 0 && touch_g_right == 0 && touch_b_right == 0){   
+         xPoint = xPoint - xVel;//move to right
+      }
+      else{
+      xPoint = xPoint + xVel;//move to right
+      }
     }
     
     //Get Y value
     y = theOscMessage.get(1).floatValue();
+    
+    //Move Up & control black pixel
     if (Math.round(y) == 1){
+      if(touch_r_up == 0 && touch_g_up == 0 && touch_b_up == 0){   
+         yPoint = yPoint + yVel;//move up
+      }
+      else{
       yPoint = yPoint - yVel;//move up
+      }
     }
-    if(Math.round(y) == -1) {
-    yPoint = yPoint + yVel;//move down
+    
+    
+    //Move Down & control black pixel
+    if(y < 0.4) {
+      if(touch_r_down == 0 && touch_g_down == 0 && touch_b_down == 0){   
+         yPoint = yPoint - yVel;//move up
+      }
+      else{
+        yPoint = yPoint + yVel;//move down
+      }
     }
-    println(" value: y:"+y);
-    //b = theOscMessage.get(2).floatValue();
     
   }
   
@@ -306,15 +325,4 @@ void oscEvent(OscMessage theOscMessage) {
     z = -theOscMessage.get(0).floatValue();
     println(" distance: "+z);
   }
-  
-  
-}
-
-void oscMovementRecieved(){
-if (r > 0){
-xPoint = xPoint - xVel;
-} else if(r < 0){
-xPoint = xPoint + xVel;
-}
-
 }
