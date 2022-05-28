@@ -6,9 +6,7 @@ OscP5 oscP5;
 NetAddress myRemoteLocation;
 ControlP5 cp5;
 
-float x,y,z;  //coordinates of the shape (translation)
-
-float r,g,b; //color of the shape
+float x,y,z,d;  //coordinates of the shape (translation)
 
 PImage labyrinth;
 PImage logo;
@@ -241,7 +239,6 @@ void oscEvent(OscMessage theOscMessage) {
   //If address of oscMessage is /colour then change the shape and colour visualized
   if (theOscMessage.checkAddrPattern("/movement"))
   {
-    
     //Get X value
     x = theOscMessage.get(0).floatValue();
     
@@ -251,7 +248,7 @@ void oscEvent(OscMessage theOscMessage) {
         xPoint = xPoint + xVel;
       }
       else{
-      xPoint = xPoint - xVel;//move to left ù
+        xPoint = xPoint - xVel;//move to left ù
       }
     }
     
@@ -261,7 +258,7 @@ void oscEvent(OscMessage theOscMessage) {
          xPoint = xPoint - xVel;//move to right
       }
       else{
-      xPoint = xPoint + xVel;//move to right
+        xPoint = xPoint + xVel;//move to right
       }
     }
     
@@ -274,7 +271,7 @@ void oscEvent(OscMessage theOscMessage) {
          yPoint = yPoint + yVel;//move up
       }
       else{
-      yPoint = yPoint - yVel;//move up
+        yPoint = yPoint - yVel;//move up
       }
     }
     
@@ -288,10 +285,16 @@ void oscEvent(OscMessage theOscMessage) {
         yPoint = yPoint + yVel;//move down
       }
     }
-    
+    //Get Z digital value
+  z = theOscMessage.get(2).floatValue();
+  println("z: "+z);
+  
+  //Get digital value
+  d = theOscMessage.get(3).floatValue();
+  //println("d: "+d);
   }
   
-  
+  /*
   //If address of oscMessage is /distance then change the size of the shape
   if (theOscMessage.checkAddrPattern("/distance"))
   {
@@ -299,5 +302,5 @@ void oscEvent(OscMessage theOscMessage) {
     //get distance (invert sign, assuming distance in the message is passed as a positive value)
     z = -theOscMessage.get(0).floatValue();
     println(" distance: "+z);
-  }
+  }*/
 }
