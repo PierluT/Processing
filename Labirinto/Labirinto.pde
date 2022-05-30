@@ -8,10 +8,11 @@ ControlP5 cp5;
 
 float x,y,z,d;  //coordinates of the shape (translation)
 
-PImage labyrinth;
+
+PImage[] labyrinths = new PImage[2];
 PImage logo;
 PImage bg;
-
+PImage labyrinthsToDraw;
 //ANDREW
 boolean boomAndrew = false;
 PImage andrew;
@@ -42,11 +43,21 @@ PImage chick;
 float xChick = 230;
 float yChick = 400;
 
+
+
+
 //PIG
 boolean boomP = false;
 PImage pig;
 float xPig = 500;
 float yPig = 600;
+
+
+//BULL
+boolean boomB = false;
+PImage bull;
+float xBull = 110;
+float yBull = 600;
 
 
 float xPoint;
@@ -78,7 +89,11 @@ void setup(){
   size(800, 800);
 
   oscP5 = new OscP5(this,7563);
-  labyrinth = loadImage("maze.png"); 
+  
+  int i = int(random(0,labyrinths.length));
+  labyrinthsToDraw = labyrinths[i];
+  labyrinthsToDraw= loadImage("maze"+i+".png");
+  
   bg = loadImage("Verdino.jpg");
   
   logo = loadImage("Animal0.png");
@@ -88,6 +103,7 @@ void setup(){
   claudio = loadImage("ClaudioSad.jpeg");
   pier = loadImage("PierSad.jpeg");
   ricky = loadImage("RickySad.jpeg");
+  bull = loadImage("bull.png");
   
   xPoint = width/2;
   yPoint = height/2;
@@ -114,7 +130,7 @@ void draw()
   
   background(bg);
   //background(255);
-  image(labyrinth,width/2,height/2);
+  image(labyrinthsToDraw,width/2,height/2);
   
   if(boomAndrew == false){
     image(andrew,xAndrew,yAndrew,diam,diam);
@@ -133,6 +149,9 @@ void draw()
   }
   if(boomP == false){
     image(pig,xPig,yPig,diam,diam);
+  }
+  if (boomB == false){
+    image(bull,xBull,yBull,diam,diam);
   }
   
   imageMode(CENTER);
@@ -179,9 +198,9 @@ void draw()
   }
   if(xPoint >= xPier - (diam+diamCapr) && xPoint <= xPier + (diam+diamCapr)
   && yPoint >= yPier - (diam+diamCapr) && yPoint <= yPier + (diam+diamCapr)
-  && mouseButton == LEFT){
+  && d == 1){
     boomPier = true;
-    mouseButton = 0;
+    //mouseButton = 0;
   }
   
   if(xPoint >= xRicky - (diam/2 + diamCapr/2) && xPoint <= xRicky + (diam/2 + diamCapr/2)
@@ -211,10 +230,23 @@ void draw()
   }
   if(xPoint >= xChick - (diam+diamCapr) && xPoint <= xChick + (diam+diamCapr)
   && yPoint >= yChick - (diam+diamCapr) && yPoint <= yChick + (diam+diamCapr)
-  && mouseButton == LEFT){
+  && boomC == false && d == 1){
     boomC = true;
-    mouseButton = 0;
+    float xNewChick = random(0,width);
+    float yNewChick = random(0,height);
+    if ( red(get((int)xNewChick, (int)yNewChick)) != 0
+        && green(get((int)xNewChick, (int)yNewChick)) != 0
+        && blue(get((int)xNewChick, (int)yNewChick)) != 0) {
+    
+    xChick = xNewChick;
+    yChick = yNewChick;
+    imageMode(CENTER);
+    image(chick,xChick,yChick,diam,diam);
+    boomC = false;
+    }
+    
   }
+  
   
   //PIG
   if(xPoint >= xPig - (diam/2 + diamCapr/2) && xPoint <= xPig + (diam/2 + diamCapr/2)
@@ -227,9 +259,21 @@ void draw()
   }
   if(xPoint >= xPig - (diam+diamCapr) && xPoint <= xPig + (diam+diamCapr)
   && yPoint >= yPig - (diam+diamCapr) && yPoint <= yPig + (diam+diamCapr)
-  && mouseButton == LEFT){
+  && boomP == false && d == 1){
     boomP = true;
-    mouseButton = 0;
+    float xNewPig = random(0,width);
+    float yNewPig = random(0,height);
+    if ( red(get((int)xNewPig, (int)yNewPig)) != 0
+        && green(get((int)xNewPig, (int)yNewPig)) != 0
+        && blue(get((int)xNewPig, (int)yNewPig)) != 0) {
+    
+    xPig = xNewPig;
+    yPig = yNewPig;
+    imageMode(CENTER);
+    image(pig,xPig,yPig,diam,diam);
+    boomP = false;
+    }
+    
   }
 }
 
@@ -241,9 +285,10 @@ void oscEvent(OscMessage theOscMessage) {
   {
     //Get X value
     x = theOscMessage.get(0).floatValue();
-    
+   
     //Move to left & control black pixel
     if (Math.round(x) == -1){
+      //println("mi sposto a sinistra"+ x);
       if(touch_r_left == 0 && touch_g_left == 0 && touch_b_left == 0){   
         xPoint = xPoint + xVel;
       }
@@ -254,6 +299,7 @@ void oscEvent(OscMessage theOscMessage) {
     
     //Move to right & control black pixel
     if(Math.round(x) == 1) {
+      //println("mi sposto a destra"+ x);
       if(touch_r_right == 0 && touch_g_right == 0 && touch_b_right == 0){   
          xPoint = xPoint - xVel;//move to right
       }
@@ -287,20 +333,11 @@ void oscEvent(OscMessage theOscMessage) {
     }
     //Get Z digital value
   z = theOscMessage.get(2).floatValue();
-  println("z: "+z);
+  //println("z: "+z);
   
-  //Get digital value
+  //Get digital value of the sensor
   d = theOscMessage.get(3).floatValue();
   //println("d: "+d);
   }
-  
-  /*
-  //If address of oscMessage is /distance then change the size of the shape
-  if (theOscMessage.checkAddrPattern("/distance"))
-  {
-    
-    //get distance (invert sign, assuming distance in the message is passed as a positive value)
-    z = -theOscMessage.get(0).floatValue();
-    println(" distance: "+z);
-  }*/
+ 
 }
