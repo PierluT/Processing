@@ -150,7 +150,7 @@ void draw()
   */
   if (boomPeople == false){
         for (int j = 0; j <people.length;j++){
-        people[j] = loadImage("people"+j+".jpeg");
+        people[j] = loadImage("people"+j+".png");
 
 }
   image(people[int(random(0,people.length))],xPeople,yPeople,diam,diam);
