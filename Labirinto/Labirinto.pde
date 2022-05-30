@@ -7,9 +7,11 @@ NetAddress myRemoteLocation;
 ControlP5 cp5;
 
 float x,y,z,d;  //coordinates of the shape (translation)
-
-
 PImage[] labyrinths = new PImage[2];
+PImage [] people = new PImage [4];
+boolean boomPeople = false;
+float xPeople = 240;
+float yPeople =450;
 PImage logo;
 PImage bg;
 PImage labyrinthsToDraw;
@@ -99,11 +101,12 @@ void setup(){
   logo = loadImage("Animal0.png");
   chick = loadImage("Animal1.png");
   pig = loadImage("Animal2.png");
-  andrew = loadImage("AndrewSad.png");
-  claudio = loadImage("ClaudioSad.jpeg");
-  pier = loadImage("PierSad.jpeg");
-  ricky = loadImage("RickySad.jpeg");
-  bull = loadImage("bull.png");
+  bull = loadImage("bull.png");  
+  
+  
+
+
+  
   
   xPoint = width/2;
   yPoint = height/2;
@@ -131,7 +134,7 @@ void draw()
   background(bg);
   //background(255);
   image(labyrinthsToDraw,width/2,height/2);
-  
+  /*
   if(boomAndrew == false){
     image(andrew,xAndrew,yAndrew,diam,diam);
   }
@@ -144,6 +147,15 @@ void draw()
   if(boomRicky == false){
     image(ricky,xRicky,yRicky,diam,diam);
   }
+  */
+  if (boomPeople == false){
+        for (int j = 0; j <people.length;j++){
+        people[j] = loadImage("people"+j+".jpeg");
+
+}
+  image(people[int(random(0,people.length))],xPeople,yPeople,diam,diam);
+  }
+  
   if(boomC == false){
     image(chick,xChick,yChick,diam,diam);
   }
