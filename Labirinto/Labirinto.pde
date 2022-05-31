@@ -22,7 +22,7 @@ float xChick = random(0,800);
 float yChick = random(0,800);
 
 //GIF CHICK
-int numFramesC = 4;
+int numFramesC = 12;
 int currentFrameC = 0;
 PImage[] gifChick = new PImage[numFramesC];
 
@@ -42,7 +42,7 @@ float xBull = random(0,800);
 float yBull = random(0,800);
 
 //GIF BULL
-int numFramesB = 2;
+int numFramesB = 12;
 int currentFrameB = 0;
 PImage[] gifBull = new PImage[numFramesB];
 
@@ -100,7 +100,7 @@ float touch_b_right ;
 
 
 //GIF BACKGROUND
-int numFrames = 2;
+int numFrames = 40;
 int currentFrame = 0;
 PImage[] images = new PImage[numFrames];
 
