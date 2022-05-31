@@ -57,7 +57,8 @@ int currentFrameV = 0;
 PImage[] gifVeloc = new PImage[numFramesV];
 
 //PEOPLE
-int boomPeople;
+boolean boomPeople = false;
+int casePeople;
 
 PImage cla;
 PImage andrew;
@@ -153,7 +154,7 @@ void setup(){
   pier = loadImage("pier.png");
   rick = loadImage("rick.png");
   
-  boomPeople = (int)random(0,3);
+  casePeople = (int)random(0,3);
   
   xPoint = width/2;
   yPoint = height/2;
@@ -189,7 +190,7 @@ void draw()
   imageMode(CENTER);
   image(labyrinthsToDraw,width/2,height/2);
   
-  switch(boomPeople){
+  switch(casePeople){
     case 0:
     image(cla,xPeople,yPeople,wPeople,hPeople);
     break;
@@ -205,6 +206,15 @@ void draw()
   }
   
   //PEOPLE on fire
+  
+   if(xPoint >= xPeople - (diam/2) && xPoint <= xPeople + (diam/2)
+  && yPoint >= yPeople - (diam/2) && yPoint <= yPeople + (diam/2)
+  && boomPeople == false){
+    imageMode(CENTER);
+    image(logo,width/2,height/2,diamCapr,diamCapr);
+    xPoint = width/2;
+    yPoint = height/2;
+  }
 
   if(xPoint >= xPeople - (diamCapr) && xPoint <= xPeople + (diamCapr)
   && yPoint >= yPeople - (diamCapr) && yPoint <= yPeople + (diamCapr)
@@ -222,25 +232,25 @@ void draw()
           yPeople = yNewPeople;
           imageMode(CENTER);
           
-          switch(boomPeople){
+          switch(casePeople){
             case 0:
             image(andrew,xPeople,yPeople,wPeople,hPeople);
-            boomPeople = 1;
+            casePeople = 1;
             canDraw = true;
             break;
             case 1:
             image(pier,xPeople,yPeople,wPeople,hPeople);
-            boomPeople = 2;
+            casePeople = 2;
             canDraw = true;
             break;
             case 2:
             image(rick,xPeople,yPeople,wPeople,hPeople);
-            boomPeople = 3;
+            casePeople = 3;
             canDraw = true;
             break;
             case 3:
             image(cla,xPeople,yPeople,wPeople,hPeople);
-            boomPeople = 0;
+            casePeople = 0;
             canDraw = true;
             break;
           }
