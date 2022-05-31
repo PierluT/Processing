@@ -305,9 +305,21 @@ void draw()
       float xNewChick = random(0,width);
       float yNewChick = random(0,height);
     
-    if (   red(get((int)xNewChick, (int)yNewChick)) != 0
-        && green(get((int)xNewChick, (int)yNewChick)) != 0
-        && blue(get((int)xNewChick, (int)yNewChick)) != 0) {
+    if (red(get((int)(xNewChick+diam/2), (int)(yNewChick+diam/2))) != 0
+        && green(get((int)(xNewChick+diam/2), (int)(yNewChick+diam/2))) != 0
+        && blue(get((int)(xNewChick+diam/2), (int)(yNewChick+diam/2))) != 0
+        
+        && red(get((int)(xNewChick+diam/2), (int)(yNewChick-diam/2))) != 0
+        && green(get((int)(xNewChick+diam/2), (int)(yNewChick-diam/2))) != 0
+        && blue(get((int)(xNewChick+diam/2), (int)(yNewChick-diam/2))) != 0
+        
+        && red(get((int)(xNewChick-diam/2), (int)(yNewChick+diam/2))) != 0
+        && green(get((int)(xNewChick-diam/2), (int)(yNewChick+diam/2))) != 0
+        && blue(get((int)(xNewChick-diam/2), (int)(yNewChick+diam/2))) != 0
+        
+        &&red(get((int)(xNewChick-diam/2), (int)(yNewChick-diam/2))) != 0
+        && green(get((int)(xNewChick-diam/2), (int)(yNewChick-diam/2))) != 0
+        && blue(get((int)(xNewChick-diam/2), (int)(yNewChick-diam/2))) != 0) {
     
           xChick = xNewChick;
           yChick = yNewChick;
