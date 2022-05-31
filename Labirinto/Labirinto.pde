@@ -146,10 +146,6 @@ void setup(){
       gifPig[p] = loadImage("pig_"+p+".gif");
     }
     
-    //chick = loadImage("chick.png");
-    //bull = loadImage("bull.png"); 
-    //pig = loadImage("pig.png");
-  
 
   
   cla = loadImage("cla.png");
@@ -310,8 +306,6 @@ void draw()
     
           xChick = xNewChick;
           yChick = yNewChick;
-          //imageMode(CENTER);
-          //image(chick,xChick,yChick,diam,diam);
           canDraw = true;
           boomC = false;
     
@@ -379,8 +373,6 @@ void draw()
     
     xPig = xNewPig;
     yPig = yNewPig;
-    //imageMode(CENTER);
-    //image(pig,xPig,yPig,diam,diam);
     canDraw = true;
     boomP = false;
         }
@@ -411,40 +403,13 @@ void draw()
     
     xBull = xNewBull;
     yBull = yNewBull;
-    //imageMode(CENTER);
-    //image(bull,xBull,yBull,diam,diam);
     canDraw = true;
     boomB = false;
     }
     }
   }
   
-  //PEOPLE
-  /*if(xPoint >= xPeople - (diam/2 + diamCapr/2) && xPoint <= xPeople + (diam/2 + diamCapr/2)
-  && yPoint >= yPeople - (diam/2 + diamCapr/2) && yPoint <= yPeople + (diam/2 + diamCapr/2)
-  && boomPeople == false){
-    imageMode(CENTER);
-    image(logo,width/2,height/2,diamCapr,diamCapr);
-    xPoint = width/2;
-    yPoint = height/2;
-  }
-  if(xPoint >= xPeople - (diam+diamCapr) && xPoint <= xPeople + (diam+diamCapr)
-  && yPoint >= yPeople - (diam+diamCapr) && yPoint <= yPeople + (diam+diamCapr)
-  && boomPeople == false && d == 1){
-    boomPeople = true;
-    float xNewPeople = random(0,width);
-    float yNewPeople = random(0,height);
-    if ( red(get((int)xNewPeople, (int)yNewPeople)) != 0
-        && green(get((int)xNewPeople, (int)yNewPeople)) != 0
-        && blue(get((int)xNewPeople, (int)yNewPeople)) != 0) {
-    
-    xPeople = xNewPeople;
-    yPeople = yNewPeople;
-    imageMode(CENTER);
-    image(people[(int)random(0,people.length)],xPeople,yPeople,diam,diam);
-    boomPeople = false;
-    }
-  }*/
+
 
 }
 
