@@ -183,11 +183,11 @@ void draw()
     break;
   }
   
-  //PEOPLE
+  //PEOPLE on fire
 
   if(xPoint >= xPeople - (diamCapr) && xPoint <= xPeople + (diamCapr)
   && yPoint >= yPeople - (diamCapr) && yPoint <= yPeople + (diamCapr)
-  && z == 1){ //d da cambiare con z del joystick!!
+  && z == 0){ 
     boolean canDraw = false;
     while(canDraw == false){
     float xNewPeople = random(0,width);
@@ -431,7 +431,7 @@ void oscEvent(OscMessage theOscMessage) {
     }
     //Get Z digital value
   z = theOscMessage.get(2).floatValue();
-  //println("z: "+z);
+  println("z: "+z);
   
   //Get digital value of the sensor
   d = theOscMessage.get(3).floatValue();
