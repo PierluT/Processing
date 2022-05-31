@@ -174,7 +174,7 @@ void draw()
   //background(bg);
   
   //GIF BACKGROUND
-  frameRate(2);
+  frameRate(24);
   currentFrame = (currentFrame+1) % numFrames;
   background(images[currentFrame]);
   
@@ -370,8 +370,8 @@ void draw()
     
     xBull = xNewBull;
     yBull = yNewBull;
-    imageMode(CENTER);
-    image(bull,xBull,yBull,diam,diam);
+    //imageMode(CENTER);
+    //image(bull,xBull,yBull,diam,diam);
     canDraw = true;
     boomB = false;
     }
