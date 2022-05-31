@@ -11,14 +11,9 @@ float x,y,z,d;  //coordinates of the shape (translation)
 PImage[] labyrinths = new PImage[3];
 PImage labyrinthsToDraw;
 
-/*PImage [] people = new PImage[4];
-PImage presetPeople;
-boolean boomPeople = false;
-float xPeople = 100;
-float yPeople = 100;*/
 
 PImage logo;
-PImage bg;
+//PImage bg;
 
 
 //CHICK
@@ -26,6 +21,11 @@ boolean boomC = false;
 PImage chick;
 float xChick = random(0,800);
 float yChick = random(0,800);
+
+//GIF CHICK
+int numFramesC = 4;
+int currentFrameC = 0;
+PImage[] gifChick = new PImage[numFramesC];
 
 //PIG
 boolean boomP = false;
@@ -38,6 +38,11 @@ boolean boomB = false;
 PImage bull;
 float xBull = random(0,800);
 float yBull = random(0,800);
+
+//GIF BULL/VELOCIRAPTOR
+int numFramesV = 19;
+int currentFrameV = 0;
+PImage[] gifVel = new PImage[numFramesV];
 
 //PEOPLE
 int boomPeople;
@@ -100,52 +105,30 @@ void setup(){
   
   
   //GIF BACKGROUND
-  images[0] = loadImage("gif_0.gif");
-  images[1] = loadImage("gif_1.gif");
-  images[2] = loadImage("gif_2.gif");
-  images[3] = loadImage("gif_3.gif");
-  images[4] = loadImage("gif_4.gif");
-  images[5] = loadImage("gif_5.gif");
-  images[6] = loadImage("gif_6.gif");
-  images[7] = loadImage("gif_7.gif");
-  
+  for(int b=0; b<images.length; b++){
+      images[b] = loadImage("gif_"+b+".gif");
+    }
 
-  
   //bg = loadImage("Verdino.jpg");
   
   logo = loadImage("logo.png");
   
- 
-
- /*
-  if (red(get((int)(xChick-diam/2), (int)(yChick+diam/2))) != 0
-  && green(get((int)(xChick-diam/2), (int)(yChick+diam/2))) != 0
-  && blue(get((int)(xChick-diam/2), (int)(yChick+diam/2))) != 0
-  
-  &&red(get((int)(xChick+diam/2), (int)(yChick-diam/2))) != 0
-  && green(get((int)(xChick+diam/2), (int)(yChick-diam/2))) != 0
-  && blue(get((int)(xChick+diam/2), (int)(yChick-diam/2))) != 0
-  
-  &&red(get((int)(xChick-diam/2), (int)yChick)) != 0
-  && green(get((int)(xChick-diam/2), (int)yChick)) != 0
-  && blue(get((int)(xChick-diam/2), (int)yChick)) != 0
-  
-  &&red(get((int)(xChick+diam/2), (int)yChick)) != 0
-  && green(get((int)(xChick+diam/2), (int)yChick)) != 0
-  && blue(get((int)(xChick+diam/2), (int)yChick)) != 0
-  
-  &&red(get((int)xChick, (int)yChick)) != 0
-  && green(get((int)xChick, (int)yChick)) != 0
-  && blue(get((int)xChick, (int)yChick)) != 0) {
     
-    imageMode(CENTER);
-      }
-    */
-    chick = loadImage("chick.png");
-
+    //GIFCHICK
+    for(int c=0; c<gifChick.length; c++){
+      gifChick[c] = loadImage("chick_"+c+".gif");
+    }
+    
+    //GIFBULL/VEL
+    for(int v=0; v<gifVel.length; v++){
+      gifVel[v] = loadImage("veloc_"+v+".gif");
+    }
+    
+    //chick = loadImage("chick.png");
+    //bull = loadImage("bull.png"); 
 
   pig = loadImage("pig.png");
-  bull = loadImage("bull.png"); 
+  
 
   
   cla = loadImage("cla.png");
@@ -182,7 +165,7 @@ void draw()
   //background(bg);
   
   //GIF BACKGROUND
-  frameRate(10);
+  frameRate(2);
   currentFrame = (currentFrame+1) % numFrames;
   background(images[currentFrame]);
   
@@ -250,15 +233,26 @@ void draw()
   }
 
    
-  if(boomC == false){
+  /*if(boomC == false){
     image(chick,xChick,yChick,diam,diam);
-  }
-  if(boomP == false){
-    image(pig,xPig,yPig,diam,diam);
   }
   if (boomB == false){
     image(bull,xBull,yBull,diam,diam);
+  }*/
+  
+  if(boomC == false){
+    currentFrameC = (currentFrameC+1) % numFramesC;
+    image(gifChick[currentFrameC],xChick,yChick,diam,diam);
   }
+  if (boomB == false){
+    currentFrameV = (currentFrameV+1) % numFramesV;
+    image(gifVel[currentFrameV],xBull,yBull,diam,diam);
+  }
+  
+  if(boomP == false){
+    image(pig,xPig,yPig,diam,diam);
+  }
+  
   
   imageMode(CENTER);
   image(logo,xPoint,yPoint,diamCapr,diamCapr);
