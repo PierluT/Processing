@@ -60,7 +60,7 @@ float xVel = 5;
 float yVel = 5;
 
 float diamCapr = 100;
-float diam = 100;
+float diam = 90;
 
 
 
@@ -100,9 +100,36 @@ void setup(){
   
   logo = loadImage("logo.png");
   
-  chick = loadImage("chick.png");
+  //da mettere nel draw sennò si impalla se non piglia il nero
+
+ 
+  if (red(get((int)(xChick-diam/2), (int)(yChick+diam/2))) != 0
+  && green(get((int)(xChick-diam/2), (int)(yChick+diam/2))) != 0
+  && blue(get((int)(xChick-diam/2), (int)(yChick+diam/2))) != 0
+  
+  &&red(get((int)(xChick+diam/2), (int)(yChick-diam/2))) != 0
+  && green(get((int)(xChick+diam/2), (int)(yChick-diam/2))) != 0
+  && blue(get((int)(xChick+diam/2), (int)(yChick-diam/2))) != 0
+  
+  &&red(get((int)(xChick-diam/2), (int)yChick)) != 0
+  && green(get((int)(xChick-diam/2), (int)yChick)) != 0
+  && blue(get((int)(xChick-diam/2), (int)yChick)) != 0
+  
+  &&red(get((int)(xChick+diam/2), (int)yChick)) != 0
+  && green(get((int)(xChick+diam/2), (int)yChick)) != 0
+  && blue(get((int)(xChick+diam/2), (int)yChick)) != 0
+  
+  &&red(get((int)xChick, (int)yChick)) != 0
+  && green(get((int)xChick, (int)yChick)) != 0
+  && blue(get((int)xChick, (int)yChick)) != 0) {
+    
+    imageMode(CENTER);
+    chick = loadImage("chick.png");
+  }
+
   pig = loadImage("pig.png");
-  bull = loadImage("bull.png");  
+  bull = loadImage("bull.png"); 
+
   
   cla = loadImage("cla.png");
   andrew = loadImage("andrew.png");
