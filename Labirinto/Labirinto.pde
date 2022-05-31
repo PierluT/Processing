@@ -13,7 +13,6 @@ PImage labyrinthsToDraw;
 
 
 PImage logo;
-//PImage bg;
 
 
 //CHICK
@@ -121,8 +120,6 @@ void setup(){
   for(int b=0; b<images.length; b++){
       images[b] = loadImage("gif_"+b+".gif");
     }
-
-  //bg = loadImage("Verdino.jpg");
   
   logo = loadImage("logo.png");
   
@@ -179,8 +176,6 @@ void draw()
   touch_g_right = green(get((int)(xPoint+diamCapr/2),(int)yPoint));
   touch_b_right = blue(get((int)(xPoint+diamCapr/2),(int)yPoint));
   
-  
-  //background(bg);
   
   //GIF BACKGROUND
   frameRate(24);
