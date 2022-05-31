@@ -219,9 +219,37 @@ void draw()
     float xNewPeople = random(0,width);
     float yNewPeople = random(0,height);
     
-    if ( red(get((int)xNewPeople, (int)yNewPeople)) != 0
-        && green(get((int)xNewPeople, (int)yNewPeople)) != 0
-        && blue(get((int)xNewPeople, (int)yNewPeople)) != 0) {
+    if (red(get((int)(xNewPeople+wPeople/2), (int)(yNewPeople+hPeople/2))) != 0
+        && green(get((int)(xNewPeople+wPeople/2), (int)(yNewPeople+hPeople/2))) != 0
+        && blue(get((int)(xNewPeople+wPeople/2), (int)(yNewPeople+hPeople/2))) != 0
+        
+        && red(get((int)(xNewPeople+wPeople/2), (int)(yNewPeople-hPeople/2))) != 0
+        && green(get((int)(xNewPeople+wPeople/2), (int)(yNewPeople-hPeople/2))) != 0
+        && blue(get((int)(xNewPeople+wPeople/2), (int)(yNewPeople-hPeople/2))) != 0
+
+        && red(get((int)(xNewPeople-wPeople/2), (int)(yNewPeople+hPeople/2))) != 0
+        && green(get((int)(xNewPeople-wPeople/2), (int)(yNewPeople+hPeople/2))) != 0
+        && blue(get((int)(xNewPeople-wPeople/2), (int)(yNewPeople+hPeople/2))) != 0
+        
+        &&red(get((int)(xNewPeople-wPeople/2), (int)(yNewPeople-hPeople/2))) != 0
+        && green(get((int)(xNewPeople-wPeople/2), (int)(yNewPeople-hPeople/2))) != 0
+        && blue(get((int)(xNewPeople-wPeople/2), (int)(yNewPeople-hPeople/2))) != 0
+        
+        && red(get((int)(xNewPeople), (int)(yNewPeople+hPeople/2))) != 0
+        && green(get((int)(xNewPeople), (int)(yNewPeople+hPeople/2))) != 0
+        && blue(get((int)(xNewPeople), (int)(yNewPeople+hPeople/2))) != 0
+        
+        && red(get((int)(xNewPeople+wPeople/2), (int)(yNewPeople))) != 0
+        && green(get((int)(xNewPeople+wPeople/2), (int)(yNewPeople))) != 0
+        && blue(get((int)(xNewPeople+wPeople/2), (int)(yNewPeople))) != 0
+        
+        && red(get((int)(xNewPeople), (int)(yNewPeople-hPeople/2))) != 0
+        && green(get((int)(xNewPeople), (int)(yNewPeople-hPeople/2))) != 0
+        && blue(get((int)(xNewPeople), (int)(yNewPeople-hPeople/2))) != 0
+        
+        && red(get((int)(xNewPeople-wPeople/2), (int)(yNewPeople))) != 0
+        && green(get((int)(xNewPeople-wPeople/2), (int)(yNewPeople))) != 0
+        && blue(get((int)(xNewPeople-wPeople/2), (int)(yNewPeople))) != 0) {
           
           xPeople = xNewPeople;
           yPeople = yNewPeople;
@@ -319,7 +347,23 @@ void draw()
         
         &&red(get((int)(xNewChick-diam/2), (int)(yNewChick-diam/2))) != 0
         && green(get((int)(xNewChick-diam/2), (int)(yNewChick-diam/2))) != 0
-        && blue(get((int)(xNewChick-diam/2), (int)(yNewChick-diam/2))) != 0) {
+        && blue(get((int)(xNewChick-diam/2), (int)(yNewChick-diam/2))) != 0
+        
+        && red(get((int)(xNewChick), (int)(yNewChick+diam/2))) != 0
+        && green(get((int)(xNewChick), (int)(yNewChick+diam/2))) != 0
+        && blue(get((int)(xNewChick), (int)(yNewChick+diam/2))) != 0
+        
+        && red(get((int)(xNewChick+diam/2), (int)(yNewChick))) != 0
+        && green(get((int)(xNewChick+diam/2), (int)(yNewChick))) != 0
+        && blue(get((int)(xNewChick+diam/2), (int)(yNewChick))) != 0
+        
+        && red(get((int)(xNewChick), (int)(yNewChick-diam/2))) != 0
+        && green(get((int)(xNewChick), (int)(yNewChick-diam/2))) != 0
+        && blue(get((int)(xNewChick), (int)(yNewChick-diam/2))) != 0
+        
+        && red(get((int)(xNewChick-diam/2), (int)(yNewChick))) != 0
+        && green(get((int)(xNewChick-diam/2), (int)(yNewChick))) != 0
+        && blue(get((int)(xNewChick-diam/2), (int)(yNewChick))) != 0) {
     
           xChick = xNewChick;
           yChick = yNewChick;
@@ -366,7 +410,23 @@ void draw()
         
         &&red(get((int)(xNewVeloc-diam/2), (int)(yNewVeloc-diam/2))) != 0
         && green(get((int)(xNewVeloc-diam/2), (int)(yNewVeloc-diam/2))) != 0
-        && blue(get((int)(xNewVeloc-diam/2), (int)(yNewVeloc-diam/2))) != 0) {
+        && blue(get((int)(xNewVeloc-diam/2), (int)(yNewVeloc-diam/2))) != 0
+        
+        && red(get((int)(xNewVeloc), (int)(yNewVeloc+diam/2))) != 0
+        && green(get((int)(xNewVeloc), (int)(yNewVeloc+diam/2))) != 0
+        && blue(get((int)(xNewVeloc), (int)(yNewVeloc+diam/2))) != 0
+        
+        && red(get((int)(xNewVeloc+diam/2), (int)(yNewVeloc))) != 0
+        && green(get((int)(xNewVeloc+diam/2), (int)(yNewVeloc))) != 0
+        && blue(get((int)(xNewVeloc+diam/2), (int)(yNewVeloc))) != 0
+        
+        && red(get((int)(xNewVeloc), (int)(yNewVeloc-diam/2))) != 0
+        && green(get((int)(xNewVeloc), (int)(yNewVeloc-diam/2))) != 0
+        && blue(get((int)(xNewVeloc), (int)(yNewVeloc-diam/2))) != 0
+        
+        && red(get((int)(xNewVeloc-diam/2), (int)(yNewVeloc))) != 0
+        && green(get((int)(xNewVeloc-diam/2), (int)(yNewVeloc))) != 0
+        && blue(get((int)(xNewVeloc-diam/2), (int)(yNewVeloc))) != 0) {
     
           xVeloc = xNewVeloc;
           yVeloc = yNewVeloc;
@@ -410,7 +470,23 @@ void draw()
         
         &&red(get((int)(xNewPig-diam/2), (int)(yNewPig-diam/2))) != 0
         && green(get((int)(xNewPig-diam/2), (int)(yNewPig-diam/2))) != 0
-        && blue(get((int)(xNewPig-diam/2), (int)(yNewPig-diam/2))) != 0) {
+        && blue(get((int)(xNewPig-diam/2), (int)(yNewPig-diam/2))) != 0
+        
+        && red(get((int)(xNewPig), (int)(yNewPig+diam/2))) != 0
+        && green(get((int)(xNewPig), (int)(yNewPig+diam/2))) != 0
+        && blue(get((int)(xNewPig), (int)(yNewPig+diam/2))) != 0
+        
+        && red(get((int)(xNewPig+diam/2), (int)(yNewPig))) != 0
+        && green(get((int)(xNewPig+diam/2), (int)(yNewPig))) != 0
+        && blue(get((int)(xNewPig+diam/2), (int)(yNewPig))) != 0
+        
+        && red(get((int)(xNewPig), (int)(yNewPig-diam/2))) != 0
+        && green(get((int)(xNewPig), (int)(yNewPig-diam/2))) != 0
+        && blue(get((int)(xNewPig), (int)(yNewPig-diam/2))) != 0
+        
+        && red(get((int)(xNewPig-diam/2), (int)(yNewPig))) != 0
+        && green(get((int)(xNewPig-diam/2), (int)(yNewPig))) != 0
+        && blue(get((int)(xNewPig-diam/2), (int)(yNewPig))) != 0) {
     
     xPig = xNewPig;
     yPig = yNewPig;
@@ -452,7 +528,23 @@ void draw()
 
         &&red(get((int)(xNewBull-diam/2), (int)(yNewBull-diam/2))) != 0
         && green(get((int)(xNewBull-diam/2), (int)(yNewBull-diam/2))) != 0
-        && blue(get((int)(xNewBull-diam/2), (int)(yNewBull-diam/2))) != 0) {
+        && blue(get((int)(xNewBull-diam/2), (int)(yNewBull-diam/2))) != 0
+        
+        && red(get((int)(xNewBull), (int)(yNewBull+diam/2))) != 0
+        && green(get((int)(xNewBull), (int)(yNewBull+diam/2))) != 0
+        && blue(get((int)(xNewBull), (int)(yNewBull+diam/2))) != 0
+        
+        && red(get((int)(xNewBull+diam/2), (int)(yNewBull))) != 0
+        && green(get((int)(xNewBull+diam/2), (int)(yNewBull))) != 0
+        && blue(get((int)(xNewBull+diam/2), (int)(yNewBull))) != 0
+        
+        && red(get((int)(xNewBull), (int)(yNewBull-diam/2))) != 0
+        && green(get((int)(xNewBull), (int)(yNewBull-diam/2))) != 0
+        && blue(get((int)(xNewBull), (int)(yNewBull-diam/2))) != 0
+        
+        && red(get((int)(xNewBull-diam/2), (int)(yNewBull))) != 0
+        && green(get((int)(xNewBull-diam/2), (int)(yNewBull))) != 0
+        && blue(get((int)(xNewBull-diam/2), (int)(yNewBull))) != 0) {
     
     xBull = xNewBull;
     yBull = yNewBull;
