@@ -18,7 +18,6 @@ PImage logo;
 
 //CHICK
 boolean boomC = false;
-PImage chick;
 float xChick = random(0,800);
 float yChick = random(0,800);
 
@@ -29,7 +28,6 @@ PImage[] gifChick = new PImage[numFramesC];
 
 //PIG
 boolean boomP = false;
-PImage pig;
 float xPig = random(0,800);
 float yPig = random(0,800);
 
@@ -40,14 +38,23 @@ PImage[] gifPig = new PImage[numFramesP];
 
 //BULL
 boolean boomB = false;
-PImage bull;
 float xBull = random(0,800);
 float yBull = random(0,800);
 
-//GIF BULL/VELOCIRAPTOR
+//GIF BULL
+int numFramesB = 2;
+int currentFrameB = 0;
+PImage[] gifBull = new PImage[numFramesB];
+
+//VELOCIRAPTOR
+boolean boomV = false;
+float xVeloc = random(0,800);
+float yVeloc = random(0,800);
+
+//GIF VELOCIRAPTOR
 int numFramesV = 19;
 int currentFrameV = 0;
-PImage[] gifVel = new PImage[numFramesV];
+PImage[] gifVeloc = new PImage[numFramesV];
 
 //PEOPLE
 int boomPeople;
@@ -124,9 +131,14 @@ void setup(){
       gifChick[c] = loadImage("chick_"+c+".gif");
     }
     
-    //GIFBULL/VEL
-    for(int v=0; v<gifVel.length; v++){
-      gifVel[v] = loadImage("veloc_"+v+".gif");
+    //GIFVEL
+    for(int v=0; v<gifVeloc.length; v++){
+      gifVeloc[v] = loadImage("veloc_"+v+".gif");
+    }
+    
+    //GIFBULL
+    for(int b=0; b<gifBull.length; b++){
+      gifBull[b] = loadImage("bull_"+b+".gif");
     }
     
     //GIFPIG
@@ -242,23 +254,18 @@ void draw()
   }
 
    
-  /*if(boomC == false){
-    image(chick,xChick,yChick,diam,diam);
-  }
-  if (boomB == false){
-    image(bull,xBull,yBull,diam,diam);
-  }
-  if(boomP == false){
-    image(pig,xPig,yPig,diam,diam);
-  }*/
   
   if(boomC == false){
     currentFrameC = (currentFrameC+1) % numFramesC;
     image(gifChick[currentFrameC],xChick,yChick,diam,diam);
   }
-  if (boomB == false){
+  if (boomV == false){
     currentFrameV = (currentFrameV+1) % numFramesV;
-    image(gifVel[currentFrameV],xBull,yBull,diam,diam);
+    image(gifVeloc[currentFrameV],xVeloc,yVeloc,diam,diam);
+  }
+  if (boomB == false){
+    currentFrameB = (currentFrameB+1) % numFramesB;
+    image(gifBull[currentFrameB],xBull,yBull,diam,diam);
   }
   if (boomP == false){
     currentFrameP = (currentFrameP+1) % numFramesP;
@@ -308,6 +315,40 @@ void draw()
           canDraw = true;
           boomC = false;
     
+    } 
+    }
+  }
+  
+  //VELOCIRAPTOR
+  
+  if(xPoint >= xVeloc - (diam/2) && xPoint <= xVeloc + (diam/2)
+  && yPoint >= yVeloc - (diam/2) && yPoint <= yVeloc + (diam/2)
+  && boomV == false){
+    imageMode(CENTER);
+    image(logo,width/2,height/2,diamCapr,diamCapr);
+    xPoint = width/2;
+    yPoint = height/2;
+  }
+  
+  
+  if(xPoint >= xVeloc - (diamCapr) && xPoint <= xVeloc + (diamCapr)
+  && yPoint >= yVeloc - (diamCapr) && yPoint <= yVeloc + (diamCapr)
+  && boomV == false && d == 1){
+    boomV = true;
+    boolean canDraw = false;
+    while(canDraw == false){
+    
+      float xNewVeloc = random(0,width);
+      float yNewVeloc = random(0,height);
+    
+    if (   red(get((int)xNewVeloc, (int)yNewVeloc)) != 0
+        && green(get((int)xNewVeloc, (int)yNewVeloc)) != 0
+        && blue(get((int)xNewVeloc, (int)yNewVeloc)) != 0) {
+    
+          xVeloc = xNewVeloc;
+          yVeloc = yNewVeloc;
+          canDraw = true;
+          boomV = false;
     } 
     }
   }
