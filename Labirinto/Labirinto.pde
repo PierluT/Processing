@@ -67,8 +67,8 @@ PImage rick;
 float xPeople = random(0,600);
 float yPeople = random(0,600);
 
-float wPeople = 375/7;
-float hPeople = 550/7;
+float wPeople = 375/8;
+float hPeople = 550/8;
 
 
 float xPoint;
@@ -76,8 +76,8 @@ float yPoint;
 float xVel = 5;
 float yVel = 5;
 
-float diamCapr = 95;
-float diam = 85;
+float diamCapr = 60;
+float diam =50;
 
 
 
