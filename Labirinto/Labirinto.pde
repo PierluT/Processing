@@ -50,8 +50,8 @@ PImage rick;
 float xPeople = random(0,800);
 float yPeople = random(0,800);
 
-float wPeople = 375/6;
-float hPeople = 550/6;
+float wPeople = 375/7;
+float hPeople = 550/7;
 
 
 float xPoint;
@@ -59,8 +59,8 @@ float yPoint;
 float xVel = 5;
 float yVel = 5;
 
-float diamCapr = 100;
-float diam = 90;
+float diamCapr = 95;
+float diam = 85;
 
 
 
@@ -102,7 +102,7 @@ void setup(){
   
   //da mettere nel draw sennò si impalla se non piglia il nero
 
- 
+ /*
   if (red(get((int)(xChick-diam/2), (int)(yChick+diam/2))) != 0
   && green(get((int)(xChick-diam/2), (int)(yChick+diam/2))) != 0
   && blue(get((int)(xChick-diam/2), (int)(yChick+diam/2))) != 0
@@ -124,8 +124,10 @@ void setup(){
   && blue(get((int)xChick, (int)yChick)) != 0) {
     
     imageMode(CENTER);
+      }
+    */
     chick = loadImage("chick.png");
-  }
+
 
   pig = loadImage("pig.png");
   bull = loadImage("bull.png"); 
@@ -182,10 +184,12 @@ void draw()
   }
   
   //PEOPLE
-  if(xPoint >= xPeople - (wPeople+diamCapr) && xPoint <= xPeople + (hPeople+diamCapr)
-  && yPoint >= yPeople - (wPeople+diamCapr) && yPoint <= yPeople + (hPeople+diamCapr)
-  && d == 1){ //d da cambiare con z del joystick!!
 
+  if(xPoint >= xPeople - (diamCapr) && xPoint <= xPeople + (diamCapr)
+  && yPoint >= yPeople - (diamCapr) && yPoint <= yPeople + (diamCapr)
+  && z == 1){ //d da cambiare con z del joystick!!
+    boolean canDraw = false;
+    while(canDraw == false){
     float xNewPeople = random(0,width);
     float yNewPeople = random(0,height);
     
@@ -201,40 +205,29 @@ void draw()
             case 0:
             image(andrew,xPeople,yPeople,wPeople,hPeople);
             boomPeople = 1;
+            canDraw = true;
             break;
             case 1:
             image(pier,xPeople,yPeople,wPeople,hPeople);
             boomPeople = 2;
+            canDraw = true;
             break;
             case 2:
             image(rick,xPeople,yPeople,wPeople,hPeople);
             boomPeople = 3;
+            canDraw = true;
             break;
             case 3:
             image(cla,xPeople,yPeople,wPeople,hPeople);
             boomPeople = 0;
+            canDraw = true;
             break;
           }
+          
         }
       }
-  
-  /*if(boomAndrew == false){
-    image(andrew,xAndrew,yAndrew,wPeople,hPeople);
   }
-  if(boomCla == false){
-    image(cla,xCla,yCla,wPeople,hPeople);
-  }
-  if(boomPier == false){
-    image(pier,xPier,yPier,wPeople,hPeople);
-  }
-  if(boomRick == false){
-    image(rick,xRick,yRick,wPeople,hPeople);
-  }+/
-  
 
-  /*if(boomPeople == false){
-    image(presetPeople,xPeople,yPeople,diam,diam);
-  }*/
    
   if(boomC == false){
     image(chick,xChick,yChick,diam,diam);
@@ -250,113 +243,63 @@ void draw()
   image(logo,xPoint,yPoint,diamCapr,diamCapr);
   
 
-  
-/*
-  if(xPoint >= xAndrew - (diam/2 + diamCapr/2) && xPoint <= xAndrew + (diam/2 + diamCapr/2)
-  && yPoint >= yAndrew - (diam/2 + diamCapr/2) && yPoint <= yAndrew + (diam/2 + diamCapr/2)
-  && boomAndrew == false){
-    imageMode(CENTER);
-    image(logo,width/2,height/2,diamCapr,diamCapr);
-    xPoint = width/2;
-    yPoint = height/2;
-  }
-  if(xPoint >= xAndrew - (diam+diamCapr) && xPoint <= xAndrew + (diam+diamCapr)
-  && yPoint >= yAndrew - (diam+diamCapr) && yPoint <= yAndrew + (diam+diamCapr)
-  && mouseButton == LEFT){
-    boomAndrew = true;
-    mouseButton = 0;
-  }
-  
-  if(xPoint >= xClaudio - (diam/2 + diamCapr/2) && xPoint <= xClaudio + (diam/2 + diamCapr/2)
-  && yPoint >= yClaudio - (diam/2 + diamCapr/2) && yPoint <= yClaudio + (diam/2 + diamCapr/2)
-  && boomClaudio == false){
-    imageMode(CENTER);
-    image(logo,width/2,height/2,diamCapr,diamCapr);
-    xPoint = width/2;
-    yPoint = height/2;
-  }
-  if(xPoint >= xClaudio - (diam+diamCapr) && xPoint <= xClaudio + (diam+diamCapr)
-  && yPoint >= yClaudio - (diam+diamCapr) && yPoint <= yClaudio + (diam+diamCapr)
-  && mouseButton == LEFT){
-    boomClaudio = true;
-    mouseButton = 0;
-  }
-
-  if(xPoint >= xPier - (diam/2 + diamCapr/2) && xPoint <= xPier + (diam/2 + diamCapr/2)
-  && yPoint >= yPier - (diam/2 + diamCapr/2) && yPoint <= yPier + (diam/2 + diamCapr/2)
-  && boomPier == false){
-    imageMode(CENTER);
-    image(logo,width/2,height/2,diamCapr,diamCapr);
-    xPoint = width/2;
-    yPoint = height/2;
-  }
-  if(xPoint >= xPier - (diam+diamCapr) && xPoint <= xPier + (diam+diamCapr)
-  && yPoint >= yPier - (diam+diamCapr) && yPoint <= yPier + (diam+diamCapr)
-  && d == 1){
-    boomPier = true;
-    //mouseButton = 0;
-  }
-  
-  if(xPoint >= xRicky - (diam/2 + diamCapr/2) && xPoint <= xRicky + (diam/2 + diamCapr/2)
-  && yPoint >= yRicky - (diam/2 + diamCapr/2) && yPoint <= yRicky + (diam/2 + diamCapr/2)
-  && boomRicky == false){
-    imageMode(CENTER);
-    image(logo,width/2,height/2,diamCapr,diamCapr);
-    xPoint = width/2;
-    yPoint = height/2;
-  }
-  if(xPoint >= xRicky - (diam+diamCapr) && xPoint <= xRicky + (diam+diamCapr)
-  && yPoint >= yRicky - (diam+diamCapr) && yPoint <= yRicky + (diam+diamCapr)
-  && mouseButton == LEFT){
-    boomRicky = true;
-    mouseButton = 0;
-  }*/
+ 
   
 
   //CHICKEN
-  if(xPoint >= xChick - (diam/2 + diamCapr/2) && xPoint <= xChick + (diam/2 + diamCapr/2)
-  && yPoint >= yChick - (diam/2 + diamCapr/2) && yPoint <= yChick + (diam/2 + diamCapr/2)
+  if(xPoint >= xChick - (diam/2) && xPoint <= xChick + (diam/2)
+  && yPoint >= yChick - (diam/2) && yPoint <= yChick + (diam/2)
   && boomC == false){
     imageMode(CENTER);
     image(logo,width/2,height/2,diamCapr,diamCapr);
     xPoint = width/2;
     yPoint = height/2;
   }
-  if(xPoint >= xChick - (diam+diamCapr) && xPoint <= xChick + (diam+diamCapr)
-  && yPoint >= yChick - (diam+diamCapr) && yPoint <= yChick + (diam+diamCapr)
+  
+  if(xPoint >= xChick - (diamCapr) && xPoint <= xChick + (diamCapr)
+  && yPoint >= yChick - (diamCapr) && yPoint <= yChick + (diamCapr)
   && boomC == false && d == 1){
     boomC = true;
-    float xNewChick = random(0,width);
-    float yNewChick = random(0,height);
-    if ( red(get((int)xNewChick, (int)yNewChick)) != 0
+    boolean canDraw = false;
+    while(canDraw == false){
+    
+      float xNewChick = random(0,width);
+      float yNewChick = random(0,height);
+    
+    if (   red(get((int)xNewChick, (int)yNewChick)) != 0
         && green(get((int)xNewChick, (int)yNewChick)) != 0
         && blue(get((int)xNewChick, (int)yNewChick)) != 0) {
     
-    xChick = xNewChick;
-    yChick = yNewChick;
-    imageMode(CENTER);
-    image(chick,xChick,yChick,diam,diam);
-    boomC = false;
-    }
+          xChick = xNewChick;
+          yChick = yNewChick;
+          imageMode(CENTER);
+          image(chick,xChick,yChick,diam,diam);
+          canDraw = true;
+          boomC = false;
     
+    } 
+    }
   }
   
   
   //PIG
-  if(xPoint >= xPig - (diam/2 + diamCapr/2) && xPoint <= xPig + (diam/2 + diamCapr/2)
-  && yPoint >= yPig - (diam/2 + diamCapr/2) && yPoint <= yPig + (diam/2 + diamCapr/2)
+  if(xPoint >= xPig - (diam/2) && xPoint <= xPig + (diam/2)
+  && yPoint >= yPig - (diam/2) && yPoint <= yPig + (diam/2)
   && boomP == false){
     imageMode(CENTER);
     image(logo,width/2,height/2,diamCapr,diamCapr);
     xPoint = width/2;
     yPoint = height/2;
   }
-  if(xPoint >= xPig - (diam+diamCapr) && xPoint <= xPig + (diam+diamCapr)
-  && yPoint >= yPig - (diam+diamCapr) && yPoint <= yPig + (diam+diamCapr)
+  if(xPoint >= xPig - (diamCapr) && xPoint <= xPig + (diamCapr)
+  && yPoint >= yPig - (diamCapr) && yPoint <= yPig + (diamCapr)
   && boomP == false && d == 1){
     boomP = true;
-    float xNewPig = random(0,width);
-    float yNewPig = random(0,height);
+    boolean canDraw = false;
+    while(canDraw == false){
+      
+      float xNewPig = random(0,width);
+      float yNewPig = random(0,height);
     if ( red(get((int)xNewPig, (int)yNewPig)) != 0
         && green(get((int)xNewPig, (int)yNewPig)) != 0
         && blue(get((int)xNewPig, (int)yNewPig)) != 0) {
@@ -365,26 +308,30 @@ void draw()
     yPig = yNewPig;
     imageMode(CENTER);
     image(pig,xPig,yPig,diam,diam);
+    canDraw = true;
     boomP = false;
-    }
     
+    }
+    }
   }
   
   //BULL
-  if(xPoint >= xBull - (diam/2 + diamCapr/2) && xPoint <= xBull + (diam/2 + diamCapr/2)
-  && yPoint >= yBull - (diam/2 + diamCapr/2) && yPoint <= yBull + (diam/2 + diamCapr/2)
+  if(xPoint >= xBull - (diam/2) && xPoint <= xBull + (diam/2)
+  && yPoint >= yBull - (diam/2) && yPoint <= yBull + (diam/2)
   && boomB == false){
     imageMode(CENTER);
     image(logo,width/2,height/2,diamCapr,diamCapr);
     xPoint = width/2;
     yPoint = height/2;
   }
-  if(xPoint >= xBull - (diam+diamCapr) && xPoint <= xBull + (diam+diamCapr)
-  && yPoint >= yBull - (diam+diamCapr) && yPoint <= yBull + (diam+diamCapr)
+  if(xPoint >= xBull - (diamCapr) && xPoint <= xBull + (diamCapr)
+  && yPoint >= yBull - (diamCapr) && yPoint <= yBull + (diamCapr)
   && boomB == false && d == 1){
     boomB = true;
-    float xNewBull = random(0,width);
-    float yNewBull = random(0,height);
+    boolean canDraw = false;
+    while(canDraw == false){
+      float xNewBull = random(0,width);
+      float yNewBull = random(0,height);
     if ( red(get((int)xNewBull, (int)yNewBull)) != 0
         && green(get((int)xNewBull, (int)yNewBull)) != 0
         && blue(get((int)xNewBull, (int)yNewBull)) != 0) {
@@ -393,7 +340,9 @@ void draw()
     yBull = yNewBull;
     imageMode(CENTER);
     image(bull,xBull,yBull,diam,diam);
+    canDraw = true;
     boomB = false;
+    }
     }
   }
   
