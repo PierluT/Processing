@@ -276,6 +276,7 @@ void draw()
   
 
   //CHICKEN
+  
   if(xPoint >= xChick - (diam/2) && xPoint <= xChick + (diam/2)
   && yPoint >= yChick - (diam/2) && yPoint <= yChick + (diam/2)
   && boomC == false){
@@ -284,6 +285,7 @@ void draw()
     xPoint = width/2;
     yPoint = height/2;
   }
+  
   
   if(xPoint >= xChick - (diamCapr) && xPoint <= xChick + (diamCapr)
   && yPoint >= yChick - (diamCapr) && yPoint <= yChick + (diamCapr)
@@ -301,14 +303,15 @@ void draw()
     
           xChick = xNewChick;
           yChick = yNewChick;
-          imageMode(CENTER);
-          image(chick,xChick,yChick,diam,diam);
+          //imageMode(CENTER);
+          //image(chick,xChick,yChick,diam,diam);
           canDraw = true;
           boomC = false;
     
     } 
     }
   }
+  
   
   
   //PIG
@@ -335,14 +338,14 @@ void draw()
     
     xPig = xNewPig;
     yPig = yNewPig;
-    imageMode(CENTER);
-    image(pig,xPig,yPig,diam,diam);
+    //imageMode(CENTER);
+    //image(pig,xPig,yPig,diam,diam);
     canDraw = true;
     boomP = false;
-    
+        }
     }
     }
-  }
+  
   
   //BULL
   if(xPoint >= xBull - (diam/2) && xPoint <= xBull + (diam/2)
@@ -460,7 +463,7 @@ void oscEvent(OscMessage theOscMessage) {
     }
     //Get Z digital value
   z = theOscMessage.get(2).floatValue();
-  println("z: "+z);
+  //println("z: "+z);
   
   //Get digital value of the sensor
   d = theOscMessage.get(3).floatValue();
