@@ -33,6 +33,11 @@ PImage pig;
 float xPig = random(0,800);
 float yPig = random(0,800);
 
+//GIF PIG
+int numFramesP = 12;
+int currentFrameP = 0;
+PImage[] gifPig = new PImage[numFramesP];
+
 //BULL
 boolean boomB = false;
 PImage bull;
@@ -87,7 +92,7 @@ float touch_b_right ;
 
 
 //GIF BACKGROUND
-int numFrames = 8;
+int numFrames = 2;
 int currentFrame = 0;
 PImage[] images = new PImage[numFrames];
 
@@ -124,10 +129,14 @@ void setup(){
       gifVel[v] = loadImage("veloc_"+v+".gif");
     }
     
+    //GIFPIG
+    for(int p=0; p<gifPig.length; p++){
+      gifPig[p] = loadImage("pig_"+p+".gif");
+    }
+    
     //chick = loadImage("chick.png");
     //bull = loadImage("bull.png"); 
-
-  pig = loadImage("pig.png");
+    //pig = loadImage("pig.png");
   
 
   
@@ -238,6 +247,9 @@ void draw()
   }
   if (boomB == false){
     image(bull,xBull,yBull,diam,diam);
+  }
+  if(boomP == false){
+    image(pig,xPig,yPig,diam,diam);
   }*/
   
   if(boomC == false){
@@ -248,10 +260,12 @@ void draw()
     currentFrameV = (currentFrameV+1) % numFramesV;
     image(gifVel[currentFrameV],xBull,yBull,diam,diam);
   }
-  
-  if(boomP == false){
-    image(pig,xPig,yPig,diam,diam);
+  if (boomP == false){
+    currentFrameP = (currentFrameP+1) % numFramesP;
+    image(gifPig[currentFrameP],xPig,yPig,diam,diam);
   }
+  
+  
   
   
   imageMode(CENTER);
