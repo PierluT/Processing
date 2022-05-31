@@ -17,8 +17,8 @@ PImage logo;
 
 //CHICK
 boolean boomC = false;
-float xChick = random(0,800);
-float yChick = random(0,800);
+float xChick = random(0,600);
+float yChick = random(0,600);
 
 //GIF CHICK
 int numFramesC = 12;
@@ -27,8 +27,8 @@ PImage[] gifChick = new PImage[numFramesC];
 
 //PIG
 boolean boomP = false;
-float xPig = random(0,800);
-float yPig = random(0,800);
+float xPig = random(0,600);
+float yPig = random(0,600);
 
 //GIF PIG
 int numFramesP = 12;
@@ -37,8 +37,8 @@ PImage[] gifPig = new PImage[numFramesP];
 
 //BULL
 boolean boomB = false;
-float xBull = random(0,800);
-float yBull = random(0,800);
+float xBull = random(0,600);
+float yBull = random(0,600);
 
 //GIF BULL
 int numFramesB = 12;
@@ -47,8 +47,8 @@ PImage[] gifBull = new PImage[numFramesB];
 
 //VELOCIRAPTOR
 boolean boomV = false;
-float xVeloc = random(0,800);
-float yVeloc = random(0,800);
+float xVeloc = random(0,600);
+float yVeloc = random(0,600);
 
 //GIF VELOCIRAPTOR
 int numFramesV = 19;
@@ -64,8 +64,8 @@ PImage andrew;
 PImage pier;
 PImage rick;
 
-float xPeople = random(0,800);
-float yPeople = random(0,800);
+float xPeople = random(0,600);
+float yPeople = random(0,600);
 
 float wPeople = 375/7;
 float hPeople = 550/7;
@@ -99,7 +99,7 @@ float touch_b_right ;
 
 
 //GIF BACKGROUND
-int numFrames = 40;
+int numFrames = 2;
 int currentFrame = 0;
 PImage[] images = new PImage[numFrames];
 
@@ -107,7 +107,7 @@ PImage[] images = new PImage[numFrames];
 
 void setup(){
   
-  size(800, 800);
+  size(600, 600);
 
   oscP5 = new OscP5(this,7563);
   
