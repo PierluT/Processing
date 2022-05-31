@@ -80,6 +80,14 @@ float touch_r_right ;
 float touch_g_right ;
 float touch_b_right ;
 
+
+//GIF BACKGROUND
+int numFrames = 8;
+int currentFrame = 0;
+PImage[] images = new PImage[numFrames];
+
+
+
 void setup(){
   
   size(800, 800);
@@ -90,17 +98,24 @@ void setup(){
   labyrinthsToDraw = labyrinths[i];
   labyrinthsToDraw= loadImage("maze"+i+".png");
   
-  /*for (int j = 0; j <people.length; j++){
-    people[j] = loadImage("people"+j+".png");
-  }*/
+  
+  //GIF BACKGROUND
+  images[0] = loadImage("gif_0.gif");
+  images[1] = loadImage("gif_1.gif");
+  images[2] = loadImage("gif_2.gif");
+  images[3] = loadImage("gif_3.gif");
+  images[4] = loadImage("gif_4.gif");
+  images[5] = loadImage("gif_5.gif");
+  images[6] = loadImage("gif_6.gif");
+  images[7] = loadImage("gif_7.gif");
   
 
   
-  bg = loadImage("Verdino.jpg");
+  //bg = loadImage("Verdino.jpg");
   
   logo = loadImage("logo.png");
   
-  //da mettere nel draw sennò si impalla se non piglia il nero
+ 
 
  /*
   if (red(get((int)(xChick-diam/2), (int)(yChick+diam/2))) != 0
@@ -163,7 +178,13 @@ void draw()
   touch_g_right = green(get((int)(xPoint+diamCapr/2),(int)yPoint));
   touch_b_right = blue(get((int)(xPoint+diamCapr/2),(int)yPoint));
   
-  background(bg);
+  
+  //background(bg);
+  
+  //GIF BACKGROUND
+  frameRate(10);
+  currentFrame = (currentFrame+1) % numFrames;
+  background(images[currentFrame]);
   
   imageMode(CENTER);
   image(labyrinthsToDraw,width/2,height/2);
