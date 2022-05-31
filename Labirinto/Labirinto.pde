@@ -562,7 +562,7 @@ void draw()
 void oscEvent(OscMessage theOscMessage) {
  
   //If address of oscMessage is /colour then change the shape and colour visualized
-  if (theOscMessage.checkAddrPattern("/movement"))
+  if (theOscMessage.checkAddrPattern("/movement/xPosition"))
   {
     //Get X value
     x = theOscMessage.get(0).floatValue();
@@ -588,9 +588,11 @@ void oscEvent(OscMessage theOscMessage) {
         xPoint = xPoint + xVel;//move to right
       }
     }
-    
+  }
+    if (theOscMessage.checkAddrPattern("/movement/yPosition"))
+  {
     //Get Y value
-    y = theOscMessage.get(1).floatValue();
+    y = theOscMessage.get(0).floatValue();
     
     //Move Up & control black pixel
     if (Math.round(y) == 1){
@@ -601,8 +603,7 @@ void oscEvent(OscMessage theOscMessage) {
         yPoint = yPoint - yVel;//move up
       }
     }
-    
-    
+  
     //Move Down & control black pixel
     if(y < 0.4) {
       if(touch_r_down == 0 && touch_g_down == 0 && touch_b_down == 0){   
@@ -612,13 +613,16 @@ void oscEvent(OscMessage theOscMessage) {
         yPoint = yPoint + yVel;//move down
       }
     }
+  } 
+  if (theOscMessage.checkAddrPattern("/movement/zPosition")) {
     //Get Z digital value
-  z = theOscMessage.get(2).floatValue();
+  z = theOscMessage.get(0).floatValue();
   //println("z: "+z);
+  }
   
+  if (theOscMessage.checkAddrPattern("/movement/statusPosition")) {
   //Get digital value of the sensor
-  d = theOscMessage.get(3).floatValue();
+  d = theOscMessage.get(0).floatValue();
   //println("d: "+d);
   }
- 
 }
