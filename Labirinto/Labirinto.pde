@@ -352,9 +352,21 @@ void draw()
       float xNewVeloc = random(0,width);
       float yNewVeloc = random(0,height);
     
-    if (   red(get((int)xNewVeloc, (int)yNewVeloc)) != 0
-        && green(get((int)xNewVeloc, (int)yNewVeloc)) != 0
-        && blue(get((int)xNewVeloc, (int)yNewVeloc)) != 0) {
+    if (red(get((int)(xNewVeloc+diam/2), (int)(yNewVeloc+diam/2))) != 0
+        && green(get((int)(xNewVeloc+diam/2), (int)(yNewVeloc+diam/2))) != 0
+        && blue(get((int)(xNewVeloc+diam/2), (int)(yNewVeloc+diam/2))) != 0
+        
+        && red(get((int)(xNewVeloc+diam/2), (int)(yNewVeloc-diam/2))) != 0
+        && green(get((int)(xNewVeloc+diam/2), (int)(yNewVeloc-diam/2))) != 0
+        && blue(get((int)(xNewVeloc+diam/2), (int)(yNewVeloc-diam/2))) != 0
+        
+        && red(get((int)(xNewVeloc-diam/2), (int)(yNewVeloc+diam/2))) != 0
+        && green(get((int)(xNewVeloc-diam/2), (int)(yNewVeloc+diam/2))) != 0
+        && blue(get((int)(xNewVeloc-diam/2), (int)(yNewVeloc+diam/2))) != 0
+        
+        &&red(get((int)(xNewVeloc-diam/2), (int)(yNewVeloc-diam/2))) != 0
+        && green(get((int)(xNewVeloc-diam/2), (int)(yNewVeloc-diam/2))) != 0
+        && blue(get((int)(xNewVeloc-diam/2), (int)(yNewVeloc-diam/2))) != 0) {
     
           xVeloc = xNewVeloc;
           yVeloc = yNewVeloc;
@@ -384,9 +396,21 @@ void draw()
       
       float xNewPig = random(0,width);
       float yNewPig = random(0,height);
-    if ( red(get((int)xNewPig, (int)yNewPig)) != 0
-        && green(get((int)xNewPig, (int)yNewPig)) != 0
-        && blue(get((int)xNewPig, (int)yNewPig)) != 0) {
+    if (red(get((int)(xNewPig+diam/2), (int)(yNewPig+diam/2))) != 0
+        && green(get((int)(xNewPig+diam/2), (int)(yNewPig+diam/2))) != 0
+        && blue(get((int)(xNewPig+diam/2), (int)(yNewPig+diam/2))) != 0
+        
+        && red(get((int)(xNewPig+diam/2), (int)(yNewPig-diam/2))) != 0
+        && green(get((int)(xNewPig+diam/2), (int)(yNewPig-diam/2))) != 0
+        && blue(get((int)(xNewPig+diam/2), (int)(yNewPig-diam/2))) != 0
+        
+        && red(get((int)(xNewPig-diam/2), (int)(yNewPig+diam/2))) != 0
+        && green(get((int)(xNewPig-diam/2), (int)(yNewPig+diam/2))) != 0
+        && blue(get((int)(xNewPig-diam/2), (int)(yNewPig+diam/2))) != 0
+        
+        &&red(get((int)(xNewPig-diam/2), (int)(yNewPig-diam/2))) != 0
+        && green(get((int)(xNewPig-diam/2), (int)(yNewPig-diam/2))) != 0
+        && blue(get((int)(xNewPig-diam/2), (int)(yNewPig-diam/2))) != 0) {
     
     xPig = xNewPig;
     yPig = yNewPig;
@@ -414,9 +438,21 @@ void draw()
     while(canDraw == false){
       float xNewBull = random(0,width);
       float yNewBull = random(0,height);
-    if ( red(get((int)xNewBull, (int)yNewBull)) != 0
-        && green(get((int)xNewBull, (int)yNewBull)) != 0
-        && blue(get((int)xNewBull, (int)yNewBull)) != 0) {
+    if (red(get((int)(xNewBull+diam/2), (int)(yNewBull+diam/2))) != 0
+        && green(get((int)(xNewBull+diam/2), (int)(yNewBull+diam/2))) != 0
+        && blue(get((int)(xNewBull+diam/2), (int)(yNewBull+diam/2))) != 0
+        
+        && red(get((int)(xNewBull+diam/2), (int)(yNewBull-diam/2))) != 0
+        && green(get((int)(xNewBull+diam/2), (int)(yNewBull-diam/2))) != 0
+        && blue(get((int)(xNewBull+diam/2), (int)(yNewBull-diam/2))) != 0
+        
+        && red(get((int)(xNewBull-diam/2), (int)(yNewBull+diam/2))) != 0
+        && green(get((int)(xNewBull-diam/2), (int)(yNewBull+diam/2))) != 0
+        && blue(get((int)(xNewBull-diam/2), (int)(yNewBull+diam/2))) != 0
+
+        &&red(get((int)(xNewBull-diam/2), (int)(yNewBull-diam/2))) != 0
+        && green(get((int)(xNewBull-diam/2), (int)(yNewBull-diam/2))) != 0
+        && blue(get((int)(xNewBull-diam/2), (int)(yNewBull-diam/2))) != 0) {
     
     xBull = xNewBull;
     yBull = yNewBull;
