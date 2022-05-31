@@ -8,7 +8,7 @@ ControlP5 cp5;
 
 float x,y,z,d;  //coordinates of the shape (translation)
 
-PImage[] labyrinths = new PImage[3];
+PImage[] labyrinths = new PImage[4];
 PImage labyrinthsToDraw;
 
 
